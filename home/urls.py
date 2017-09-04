@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'templates/personal/register.html$', views.register, name = 'register'),
     url(r'templates/personal/map.html$', views.map, name = 'map'),
     url(r'templates/personal/profile.html$', views.profile, name = 'profile'),
-    url(r'templates/personal/admin.html$', views.html, name = 'admin'),
+    url(r'templates/personal/admin.html$', views.admin, name = 'admin'),
     ]
