@@ -1,5 +1,6 @@
 .info{
-    width: 50%;
-    position: relative;
-    border-style: dashed;
+    border-style: solid;
+    border-width: thick;
+    height: 100%;
+    width: 100%;
 }
