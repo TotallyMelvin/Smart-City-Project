@@ -5,7 +5,9 @@
     height:85%;
      word-wrap:break-word; 
     padding-left:5px; 
-    margin: 3% 0% 0% 1%
+/*    margin: 3% 0% 0% 1%;*/
+    left:1%;
+    overflow-y: auto;
 }
 
 .loginHome{
@@ -15,6 +17,17 @@
     height: 85%;
     word-wrap: break-word;
     padding-right: 5px;
-    left: 53%;
-    margin-top: 3%;
+    left: 54%;
+/*    margin-top: 3%;*/
+    overflow-y: auto;
+}
+
+@media(max-width:600px){
+    .info{
+        min-height: 50%;
+    }
+    
+    .loginHome{
+        min-height: 50%;
+    }
 }
