@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'templates/personal/map.html$', views.map, name = 'map'),
     url(r'templates/personal/profile.html$', views.profile, name = 'profile'),
     url(r'templates/personal/admin.html$', views.admin, name = 'admin'),
+    url(r'templates/personal/index.html$', views.index, name = 'home'),
     ]
