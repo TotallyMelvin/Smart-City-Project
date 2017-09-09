@@ -20,4 +20,3 @@ def profile(request):
 
 def admin(request):
     return render(request, 'personal/admin.html')
-
