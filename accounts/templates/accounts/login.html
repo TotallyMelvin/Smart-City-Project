@@ -1,21 +1,28 @@
 {% extends 'accounts/base.html' %}
-
 {% block content %}
 <!-- include the navBar. Change navBar at navBar.html -->
 {% include 'accounts/navBar.html' %}
 <!-- Body -->
-
-<div><br><br><br></div>
 <div class = 'info container-fluid'>
-  <h1>Welcome</h1>
-  <p>
-    You can log in here!
-  </p>
-  <h2>Login</h2>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+
+    	<div class="col-sm-6 about">
+  <h1 style="color:#ffffff">Welcome to Smart City</h1>
+  <h5 style="color:#ffffff">
+    Login to gain access to your personalised map
+  </h5>
   <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
+      <br>
       <button type="submit">Login</button>
   </form>
+</div>
+</div>
+</div>
 </div>
 {% endblock %}

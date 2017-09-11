@@ -61,8 +61,7 @@ class MapForm(forms.Form):
         ("restaurant", "Restaurants")
         )
 
-
-    location = forms.ChoiceField(label = "Select location",
+    location = forms.ChoiceField(label = "Choose location",
                                  initial = 'Brisbane',
                                  choices = city_locations,
                                  required = True)

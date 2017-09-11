@@ -15,9 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/home">Home <span class="sr-only">(current)</span></a></li>
-          {% if user.is_authenticated %}
         <li><a href="/home/map">Map</a></li>
-          {% endif %}
 <!--        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -40,25 +38,11 @@
       </form>-->
 
       <ul class="nav navbar-nav navbar-right">
-        {% if user.is_anonymous %}
         <li>
             <a href="/home/register">Register</a>
         </li>
-
         <li>
           <a href="/home/login" >Login</a>
-        {% endif %}
-            
-            {% if user.is_authenticated %}
-        <li>
-            Profile LInk
-        </li>
-          
-        <li>
-            <a href="/home/logout">Logout</a>
-        </li>
-          {% endif %}
-            
 <!--          <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>

@@ -1,7 +1,4 @@
 {% extends "accounts/base.html" %}
-
-
-
 {% block content %}
 {% include 'accounts/navBar.html' %}
 
@@ -12,22 +9,28 @@
 <div class="container">
 <div class="row">
 	<div class="col-sm-6 about">
-		<h2>About Smart City Project</h2>
+		<h1 style="color:#ffffff">About Smart City Project</h2>
 		<p>The Smart City Project is a web based system which provides information on various types of locations in a number of cities in Australia.
 		The system caters to different types of users such as business, student and tourist users with the system only showing data relevant to you.
-		While the site is early in development, we hope that we will support more cities and locations in the near future.</p>
+		While the site is early in development, we hope that we will support more cities and locations in the near future.
+		</p>
 	</div>
-
 	<div class="col-sm-1">
 	</div>
 
-<div class="row">
-    {% if user.is_authenticated %}
-        User is logged in 
-    {% endif %}
-    {% if user.is_anonymous %}
-	{% include 'accounts/login.html' %}
-    {% endif %}
+	<div class="col-sm-5 about">
+<h1 style="color:#ffffff">Welcome to Smart City</h1>
+
+Login to gain access to your personalised map
+</h5>
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<br>
+	<button type="submit">Login</button>
+
+</form>
+</div>
 </div>
 </div>
 </div>
