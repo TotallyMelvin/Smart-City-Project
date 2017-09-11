@@ -10,12 +10,11 @@
   <div class="container">
     <div class="row">
 
-    	<div class="col-sm-6 about">
-  <h1 style="color:#ffffff">Welcome to Smart City</h1>
-  <h5 style="color:#ffffff">
-    Login to gain access to your personalised map
-  </h5>
+   <div class="col-sm-6 login">
+		<h2>Welcome to Smart City</h2>
+    
   <form method="post">
+	<p>Login to gain access to your personalised map</p>
       {% csrf_token %}
       {{ form.as_p }}
       <br>

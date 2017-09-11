@@ -41,14 +41,6 @@
     font-size: 16px;
 }
 
-h1 {
-	color:#ffffff;
-}
-
-h5 {
-	color:#ffffff;
-}
-
 .about p {
 	background: white;
 	margin-top: 15px;
@@ -76,6 +68,7 @@ h5 {
 	border-radius: 12px;
 	margin-left: 20px;
 	margin-right: 20px;
+	margin-bottom: 100px;
 	padding-bottom: 50px;
 	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
 }
@@ -101,7 +94,7 @@ h5 {
 }
 
 body {
-	background: linear-gradient(0deg, #10b064, #36eb95) !important;
+	background: linear-gradient(0deg, #00b2ff, #83daff) !important;
     background-repeat: no-repeat;
 }
 

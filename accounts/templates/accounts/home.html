@@ -18,11 +18,11 @@
 	<div class="col-sm-1">
 	</div>
 
-	<div class="col-sm-5 about">
+	<div class="col-sm-5 login">
 		<h2>Welcome to Smart City</h2>
 
-		<p>Login to gain access to your personalised map</p>
 		<form method="post">
+		<p>Login to gain access to your personalised map</p>
 			{% csrf_token %}
 			{{ form.as_p }}
 			<br>
