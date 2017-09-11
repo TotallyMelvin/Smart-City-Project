@@ -1,0 +1,21 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<!-- include the navBar. Change navBar at navBar.html -->
+{% include 'accounts/navBar.html' %}
+<!-- Body -->
+
+<div><br><br><br></div>
+<div class = 'info container-fluid'>
+  <h1>Welcome</h1>
+  <p>
+    You can log in here!
+  </p>
+  <h2>Login</h2>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Login</button>
+  </form>
+</div>
+{% endblock %}

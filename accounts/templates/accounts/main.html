@@ -1,0 +1,32 @@
+{% extends "accounts/base.html" %}
+
+
+{% block content %}
+
+
+
+<p> This is a test of the google maps aspects from simply 
+	using the provided html on the website: 
+	https://developers.google.com/maps/documentation/embed/start </p>
+	
+<p>{{ map_link }}</p>
+
+
+<div> 
+<br><br><br>
+<form method = "post">
+{% csrf_token %}
+
+
+{{ form.as_p }}
+
+<button type ="submit">Submit</button>
+</form>
+
+</div>
+
+{% include "accounts/map.html" %}	
+
+
+
+{% endblock %}	
