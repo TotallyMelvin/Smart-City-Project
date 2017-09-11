@@ -7,14 +7,14 @@
   <br>
 <div class="container">
     <div class="row">
-    	<div class="???">
-  <h1 style="color:#ffffff">Smart City Maps</h1>
-
-<p> This is a test of the google maps aspects from simply
-	using the provided html on the website:
-	https://developers.google.com/maps/documentation/embed/start </p>
+    	<div class="col-sm-6 map_options">
+  <h2>Smart City Maps</h2>
 
 <form method = "post">
+<p>This is a test of the google maps aspects from simply
+using the provided html on the website:
+<br>
+https://developers.google.com/maps/documentation/embed/start</p>
 {% csrf_token %}
 {{ form.as_p }}
 
@@ -26,7 +26,7 @@
 <div class="col-sm-1">
 </div>
 
-<div class="???">
+<div class="col-sm-5 map">
 	<br><br><br>
 {% include "accounts/map.html" %}
 </div>

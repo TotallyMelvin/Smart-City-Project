@@ -6,12 +6,17 @@
 <!-- Body -->
 <div><br><br><br></div>
 <div class = 'rego container-fluid'>
-  <h1>Register your account</h1>
-  <br>
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-6 register">
+  <h2>Register your account</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
+  <br>
   <button type="submit">Register</button>
 </form>
-<div>
+</div>
+</div>
+</div>
 {% endblock %}

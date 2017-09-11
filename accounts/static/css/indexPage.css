@@ -93,6 +93,10 @@
 	text-shadow: -1px -1px 0px #141414;
 }
 
+.login #id_username, #id_password {
+	display: block;
+}
+
 body {
 	background: linear-gradient(0deg, #00b2ff, #83daff) !important;
     background-repeat: no-repeat;
