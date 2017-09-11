@@ -1,0 +1,87 @@
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { ... }
+
+.container {
+	margin: 0px;
+}
+
+.about {
+	background: linear-gradient(0deg, #1c1c1c, #363636);
+	left: 0;
+	color: grey;
+	padding-bottom: 100px;
+	margin-top: 50px;
+	border-radius: 12px;
+	margin-left: 20px;
+	margin-right: 20px;
+	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
+}
+
+.about p {
+	background: white;
+	margin-top: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+	margin-bottom: -50px;
+	padding-top: 30px;
+	padding-bottom: 50px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: grey;
+	font-size: 16px;
+}
+
+.about h2{
+	padding-top: 5px;
+	color: grey;
+	text-shadow: -1px -1px 0px #141414;
+}
+
+.login {
+	background: linear-gradient(0deg, #1c1c1c, #363636);
+	color: white;
+	margin-top: 50px;
+	border-radius: 12px;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-bottom: 50px;
+	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
+}
+
+.login input {
+	color: black;
+}
+
+.login form {
+	background: white;
+	color: grey;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+}
+
+.login h2{
+	padding-top: 5px;
+	color: grey;
+	text-shadow: -1px -1px 0px #141414;
+}
+
+body {
+	background: linear-gradient(0deg, #10b064, #36eb95) !important;
+    background-repeat: no-repeat;
+}
+
+html {
+	height: 100% !important;
+}
