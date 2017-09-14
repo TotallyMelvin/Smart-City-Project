@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -70,7 +69,6 @@ class MapForm(forms.Form):
     selected_options = forms.MultipleChoiceField(widget=
                                                  forms.CheckboxSelectMultiple,
                                                  choices = general_options)
-=======
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -142,4 +140,3 @@ class MapForm(forms.Form):
     selected_options = forms.MultipleChoiceField(widget=
                                                  forms.CheckboxSelectMultiple,
                                                  choices = general_options)
->>>>>>> b2f9c76bf153569be14824e4cdeea1e48b638a0b
