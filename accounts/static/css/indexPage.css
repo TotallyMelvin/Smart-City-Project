@@ -17,13 +17,28 @@
 .about {
 	background: linear-gradient(0deg, #1c1c1c, #363636);
 	left: 0;
-	color: grey;
+	color: white;
 	padding-bottom: 100px;
 	margin-top: 50px;
-	border-radius: 12px;
+	border-radius: 8px;
 	margin-left: 20px;
 	margin-right: 20px;
 	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
+	z-index: 10;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 .about p {
@@ -53,6 +68,7 @@
 	border-radius: 12px;
 	margin-left: 20px;
 	margin-right: 20px;
+	margin-bottom: 100px;
 	padding-bottom: 50px;
 	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
 }
@@ -77,8 +93,12 @@
 	text-shadow: -1px -1px 0px #141414;
 }
 
+.login #id_username, #id_password {
+	display: block;
+}
+
 body {
-	background: linear-gradient(0deg, #10b064, #36eb95) !important;
+	background: linear-gradient(0deg, #00b2ff, #83daff) !important;
     background-repeat: no-repeat;
 }
 
