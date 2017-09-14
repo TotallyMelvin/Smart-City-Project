@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "accounts/base.html" %}
 {% block content %}
 
@@ -40,3 +41,47 @@ https://developers.google.com/maps/documentation/embed/start</p>
 
 
 {% endblock %}
+=======
+{% extends "accounts/base.html" %}
+{% block content %}
+
+<div class = 'info container-fluid'>
+  <br>
+  <br>
+  <br>
+<div class="container">
+    <div class="row">
+    	<div class="col-sm-6 map_options">
+  <h2>Smart City Maps</h2>
+
+<form method = "post">
+<p>This is a test of the google maps aspects from simply
+using the provided html on the website:
+<br>
+https://developers.google.com/maps/documentation/embed/start</p>
+{% csrf_token %}
+{{ form.as_p }}
+
+<button type ="submit">Submit</button>
+</form>
+
+
+</div>
+<div class="col-sm-1">
+</div>
+
+<div class="col-sm-5 map">
+	<br><br><br>
+{% include "accounts/map.html" %}
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+{% endblock %}
+>>>>>>> b2f9c76bf153569be14824e4cdeea1e48b638a0b
