@@ -19,16 +19,24 @@
 	</div>
 
 	<div class="col-sm-5 login">
-		<h2>Welcome to Smart City</h2>
+		{% if user.is_anonymous %}
+			<h2>Login</h2>
+				<form method="post">
+				<p>Login to gain access to your personalised map</p>
+					{% csrf_token %}
+					{{ form.as_p }}
+					<br>
+					<button type="submit">Login</button>
 
-		<form method="post">
-		<p>Login to gain access to your personalised map</p>
-			{% csrf_token %}
-			{{ form.as_p }}
-			<br>
-			<button type="submit">Login</button>
-
-		</form>
+				</form>
+		{% endif %}
+		
+		{%if user.is_authenticated %}
+			<div class="welcome">
+			<h2>Welcome!</h2>
+			<p>Welcome user to Smart City Project. Select the map button at the top to head to the map.</p>
+			</div>
+		{% endif %}
 	</div>
 </div>
 </div>
