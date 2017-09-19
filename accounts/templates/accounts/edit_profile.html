@@ -11,14 +11,9 @@
 	<div class="col-sm-6 register">
   <h2>Manage Your Profile</h2>
 <form method="post">
-  <h2>Feel free to update your details below</h2>
-  <a href="/home/profile/edit_profile">Click here to update your details</a>
-  <br><br>
-  <p>Username: {{ user.username }}</p>
-  <p>First Name: {{ user.first_name }}</p>
-  <p>Last Name: {{ user.last_name }}</p>
-  <p>Email Address: {{ user.email }}</p>
-
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Submit</button>
 </form>
 </div>
 </div>

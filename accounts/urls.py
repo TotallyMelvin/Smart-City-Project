@@ -9,6 +9,9 @@ urlpatterns = [
     url(r'^login/$', login, {'template_name': 'accounts/login.html'}),
     url(r'^logout/$', logout, {'template_name': 'accounts/logout.html'}),
     url(r'^register/$', views.register, name='register'),
-    url(r'^map/$', MapView.as_view(), name='map')
+    url(r'^extraInfo/$', views.extraInfo, name='extraInfo'),
+    url(r'^map/$', MapView.as_view(), name='map'),
+    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^profile/edit_profile/$', views.edit_profile, name='edit_profile')
     #url(r'^maps/$', MapView.as_view(), name='map')
 ]

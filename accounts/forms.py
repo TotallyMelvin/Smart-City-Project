@@ -1,30 +1,66 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from accounts.models import UserProfileModel
 
 class UserLoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+class EditProfileForm(UserChangeForm):
+
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'first_name',
+            'last_name',
+            'password'
+        )
+
+class ExtraInfoForm(forms.Form):
+    userTypeOptions = (('student', 'Student'),
+                       ('businessmen', 'Businessmen'),
+                       ('tourist', 'Tourist'))
+
+    user_type = forms.ChoiceField(widget=forms.RadioSelect, choices=userTypeOptions)
+
+    class Meta:
+        model = UserProfileModel
+        fields = (
+            'username',
+            'user_type',
+            'phoneNumber'
+        )
+
+    def save(self, commit=True):
+        user = super(ExtraInfoForm, self).save(commit=False)
+        user.user_type = self.cleaned_data['user_type']
+
+        if commit:
+            user.save()
+
+        return user
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     userTypeOptions = (('student', 'Student'),
                        ('businessmen', 'Businessmen'),
                        ('tourist', 'Tourist'))
-    
-    userType = forms.ChoiceField(widget=forms.RadioSelect, choices=userTypeOptions)
+
+    user_type = forms.ChoiceField(widget=forms.RadioSelect, choices=userTypeOptions)
+
 
     class Meta:
-        
         model = User
         fields = (
         'username',
+        'user_type',
         'first_name',
         'last_name',
         'email',
         'password1',
-        'password2',
-        'userType'
+        'password2'
         )
 
     def save(self, commit=True):
