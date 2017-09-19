@@ -6,16 +6,16 @@ from django.contrib.auth.models import AbstractUser
 #this creates a model for a user profile (if this is modified,
 #makemigrations and migrate need to be run to update the model)
 
-class View(models.Model):
-    user_type = models.CharField(max_length=30, default='')
-
-class SiteUser(AbstractUser):
-    userType = models.ForeignKey(View, null=True, on_delete=models.SET_NULL)
-    def create_profile(sender, **kwargs):
-        if kwargs['created']:
-            user_profile = User.objects.create(userID=kwargs['instance'])
-
-    post_save.connect(create_profile, sender=User)
+# class View(models.Model):
+#     user_type = models.CharField(max_length=30, default='')
+#
+# class SiteUser(AbstractUser):
+#     userType = models.ForeignKey(View, null=True, on_delete=models.SET_NULL)
+#     def create_profile(sender, **kwargs):
+#         if kwargs['created']:
+#             user_profile = User.objects.create(userID=kwargs['instance'])
+#
+#     post_save.connect(create_profile, sender=User)
 
 class UserProfileModel(models.Model):
     username = models.OneToOneField(User)

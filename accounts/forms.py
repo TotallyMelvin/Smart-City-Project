@@ -44,18 +44,11 @@ class ExtraInfoForm(forms.Form):
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    userTypeOptions = (('student', 'Student'),
-                       ('businessmen', 'Businessmen'),
-                       ('tourist', 'Tourist'))
-
-    user_type = forms.ChoiceField(widget=forms.RadioSelect, choices=userTypeOptions)
-
 
     class Meta:
         model = User
         fields = (
         'username',
-        'user_type',
         'first_name',
         'last_name',
         'email',
