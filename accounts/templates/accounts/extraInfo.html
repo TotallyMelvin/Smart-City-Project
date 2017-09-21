@@ -1,0 +1,22 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<!-- include the navBar. Change navBar at navBar.html -->
+{% include 'accounts/navBar.html' %}
+<!-- Body -->
+<div><br><br><br></div>
+<div class = 'rego container-fluid'>
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-6 register">
+  <h2>Select a user type to complete your registration</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <br>
+  <button type="submit">Register</button>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

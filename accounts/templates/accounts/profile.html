@@ -1,0 +1,26 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<!-- include the navBar. Change navBar at navBar.html -->
+{% include 'accounts/navBar.html' %}
+<!-- Body -->
+<div><br><br><br></div>
+<div class = 'rego container-fluid'>
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-6 register">
+  <h2>Manage Your Profile</h2>
+<form method="post">
+  <h2>Feel free to update your details below</h2>
+  <a href="/home/profile/edit_profile">Click here to update your details</a>
+  <br><br>
+  <p>Username: {{ user.username }}</p>
+  <p>First Name: {{ user.first_name }}</p>
+  <p>Last Name: {{ user.last_name }}</p>
+  <p>Email Address: {{ user.email }}</p>
+
+</form>
+</div>
+</div>
+</div>
+{% endblock %}
