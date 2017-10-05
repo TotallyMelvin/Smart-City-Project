@@ -10,8 +10,11 @@
 <div class="row">
 	<div class="col-sm-6 about">
 		<h2>Contact</h2>
-		<p>???
-		</p>
+		<form role="form" action="" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button type="submit">Submit</button>
+		</form>
 	</div>
 </div>
 </div>

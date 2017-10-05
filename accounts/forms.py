@@ -67,6 +67,16 @@ class RegistrationForm(UserCreationForm):
 
         return user
 
+class ContactForm(forms.Form):
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required=True)
+    content = forms.CharField(
+        required=True,
+        widget=forms.Textarea
+    )
+    
+
+
 class MapForm(forms.Form):
     ## This sections shows the GUI and selection process to the user
     ## based on the selections from these aspects, the solution should
