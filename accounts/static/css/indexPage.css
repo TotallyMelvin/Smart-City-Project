@@ -115,31 +115,3 @@ body {
 html {
 	height: 100% !important;
 }
-
-.contact {
-	background: linear-gradient(0deg, #1c1c1c, #363636);
-	color: white;
-	padding-bottom: 40px;
-	margin-top: 50px;
-	border-radius: 8px;
-	margin-left: 20px;
-	margin-right: 20px;
-	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
-	z-index: 10;
-}
-
-.contact h2{
-	padding-top: 5px;
-	color: grey;
-	text-shadow: -1px -1px 0px #141414;
-}
-
-.contact p {
-	background: white;
-	color: grey;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	padding-left: 15px;
-	margin-left: -14.75px;
-	margin-right: -14.75px;
-}

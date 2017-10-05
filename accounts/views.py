@@ -90,3 +90,9 @@ class MapView(TemplateView): ## the maps page of the website
 
 def help(request):
     return render(request, 'accounts/help.html')
+
+def contact(request):
+    return render(request, 'accounts/contact.html')
+
+def password_recovery(request):
+    return render(request, 'accounts/password_recovery.html')
