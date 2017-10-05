@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^extraInfo/$', views.extraInfo, name='extraInfo'),
     url(r'^map/$', MapView.as_view(), name='map'),
     url(r'^profile/$', views.profile, name='profile'),
-    url(r'^profile/edit_profile/$', views.edit_profile, name='edit_profile')
+    url(r'^profile/edit_profile/$', views.edit_profile, name='edit_profile'),
+    url(r'^help/$', views.help, name='help'),
     #url(r'^maps/$', MapView.as_view(), name='map')
 ]

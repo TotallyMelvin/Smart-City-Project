@@ -87,3 +87,6 @@ class MapView(TemplateView): ## the maps page of the website
         ## return to the UI
         args = {'form': form, 'map_link': self.map_au_link}
         return render(request, self.template_name, args)
+
+def help(request):
+    return render(request, 'accounts/help.html')
