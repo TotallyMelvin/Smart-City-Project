@@ -16,7 +16,7 @@
 }
 
 body {
-	background: linear-gradient(0deg, #00b2ff, #83daff) !important;
+	background: #00b2ff !important;
     background-repeat: no-repeat;
 }
 
@@ -154,31 +154,6 @@ html {
 
 .helptext {
 	font-size: 12px;
-}
-
-/* Footer Section CSS */
-.footer {
-	width: 100%;
-	background: linear-gradient(0deg, #1c1c1c, #363636);
-	color: grey;
-}
-
-.link ul {
-	list-style: none;
-	margin: 0px;
-	padding: 0px;
-}
-
-.link a {
-	color: grey;
-	right: 10px;
-	top: 0px;
-	position: absolute;
-}
-
-.link a:hover {
-	color: white;
-	text-decoration: none;
 }
 
 /* Help Section CSS */
