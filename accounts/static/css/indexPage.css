@@ -73,6 +73,12 @@ html {
 	margin-right: -14.75px;
 }
 
+/* Footer Section CSS */
+.footer {
+	color: grey;
+	padding-left: 15px;
+}
+
 /* Login Section CSS */
 .login {
 	background: linear-gradient(0deg, #1c1c1c, #363636);
