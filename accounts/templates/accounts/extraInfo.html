@@ -8,13 +8,16 @@
 <div class = 'rego container-fluid'>
 <div class="row">
 	<div class="col-sm-1"></div>
-	<div class="col-sm-6 register">
-  <h2>Select a user type to complete your registration</h2>
+	<div class="col-sm-6 register_type">
+  <h2>Account Registration</h2>
+  <div class="user_type">
+	<p>Choose a User Type:</p>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <br>
   <button type="submit">Register</button>
+  </div>
 </form>
 </div>
 </div>

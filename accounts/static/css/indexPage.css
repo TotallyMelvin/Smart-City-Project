@@ -10,10 +10,21 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: @screen-lg-min) { ... }
 
+/* General Section CSS */
 .container {
 	margin: 0px;
 }
 
+body {
+	background: linear-gradient(0deg, #00b2ff, #83daff) !important;
+    background-repeat: no-repeat;
+}
+
+html {
+	height: 100% !important;
+}
+
+/* About Section CSS */
 .about {
 	background: linear-gradient(0deg, #1c1c1c, #363636);
 	left: 0;
@@ -28,17 +39,6 @@
 	position: absolute;
 	right: 0;
 	top: 0;
-}
-
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
 }
 
 .about p {
@@ -61,6 +61,19 @@
 	text-shadow: -1px -1px 0px #141414;
 }
 
+
+/* Welcome Section CSS */
+.welcome p {
+	background: white;
+	color: grey;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+}
+
+/* Login Section CSS */
 .login {
 	background: linear-gradient(0deg, #1c1c1c, #363636);
 	color: white;
@@ -87,16 +100,6 @@
 	margin-right: -14.75px;
 }
 
-.welcome p {
-	background: white;
-	color: grey;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	padding-left: 15px;
-	margin-left: -14.75px;
-	margin-right: -14.75px;
-}
-
 .login h2{
 	padding-top: 5px;
 	color: grey;
@@ -107,11 +110,254 @@
 	display: block;
 }
 
-body {
-	background: linear-gradient(0deg, #00b2ff, #83daff) !important;
-    background-repeat: no-repeat;
+/* Register Section CSS */
+.register {
+	background: linear-gradient(0deg, #1c1c1c, #363636);
+	left: 0;
+	color: grey;
+	padding-bottom: 50px;
+	margin-top: 50px;
+	border-radius: 8px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 100px;
+	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
+	z-index: 10;
 }
 
-html {
-	height: 100% !important;
+.register form {
+	background: white;
+	margin-top: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+	padding-top: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 30px;
+	color: grey;
+	font-size: 16px;
+}
+
+.register h2{
+	padding-top: 5px;
+	color: grey;
+	text-shadow: -1px -1px 0px #141414;
+}
+
+.register p{
+	padding-bottom: 20px;
+}
+
+.register #id_username, #id_first_name, #id_last_name, #id_email, #id_password1, #id_password2 {
+	display: block;
+}
+
+.helptext {
+	font-size: 12px;
+}
+
+/* Footer Section CSS */
+.footer {
+	width: 100%;
+	background: linear-gradient(0deg, #1c1c1c, #363636);
+	color: grey;
+}
+
+.link ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.link a {
+	color: grey;
+	right: 10px;
+	top: 0px;
+	position: absolute;
+}
+
+.link a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+/* Help Section CSS */
+.help {
+	background: linear-gradient(0deg, #1c1c1c, #363636);
+	left: 0;
+	color: white;
+	padding-bottom: 100px;
+	margin-top: 50px;
+	border-radius: 8px;
+	margin-left: 20px;
+	margin-right: 20px;
+	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
+	z-index: 10;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.help ul {
+	background: white;
+	margin-top: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+	margin-bottom: -50px;
+	padding-top: 30px;
+	padding-bottom: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 16px;
+	list-style: none;
+}
+
+.help li {
+	padding-bottom: 10px;
+}
+
+.help a {
+	color: grey;
+}
+
+.help a:hover {
+	color: white;
+}
+
+.help h2{
+	padding-top: 5px;
+	color: grey;
+	text-shadow: -1px -1px 0px #141414;
+}
+
+/* Map Section CSS */
+.map_options {
+	background: linear-gradient(0deg, #1c1c1c, #363636);
+	left: 0;
+	color: white;
+	padding-bottom: 50px;
+	margin-top: 50px;
+	border-radius: 8px;
+	margin-left: 20px;
+	margin-right: 20px;
+	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
+	z-index: 10;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.map_options h2{
+	padding-top: 5px;
+	color: grey;
+	text-shadow: -1px -1px 0px #141414;
+}
+
+.map_options form {
+	background: white;
+	color: grey;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+}
+
+.map {
+	margin-bottom: 100px;
+}
+
+#id_selected_options{
+	list-style: none;
+}
+
+/* Register User Type Section CSS */
+.register_type {
+	background: linear-gradient(0deg, #1c1c1c, #363636);
+	left: 0;
+	color: white;
+	padding-bottom: 100px;
+	margin-top: 50px;
+	border-radius: 8px;
+	margin-left: 20px;
+	margin-right: 20px;
+	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
+	z-index: 10;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.user_type {
+	background: white;
+	margin-top: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+	margin-bottom: -50px;
+	padding-top: 30px;
+	padding-bottom: 50px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: grey;
+	font-size: 16px;
+}
+
+.user_type ul {
+	list-style: none;
+}
+
+.register_type h2{
+	padding-top: 5px;
+	color: grey;
+	text-shadow: -1px -1px 0px #141414;
+}
+
+.register_type p label{
+	display: none;
+}
+
+/* Profile Section CSS */
+.edit_profile {
+	background: linear-gradient(0deg, #1c1c1c, #363636);
+	left: 0;
+	color: grey;
+	padding-bottom: 50px;
+	margin-top: 50px;
+	border-radius: 8px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 100px;
+	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
+	z-index: 10;
+}
+
+.edit_profile form {
+	background: white;
+	margin-top: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+	padding-top: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 30px;
+	color: grey;
+	font-size: 16px;
+}
+
+.edit_profile h2{
+	padding-top: 5px;
+	color: grey;
+	text-shadow: -1px -1px 0px #141414;
+}
+
+.edit_profile p{
+	padding-bottom: 20px;
+}
+
+.edit_profile #id_username, #id_first_name, #id_last_name, #id_email, #id_password1, #id_password2 {
+	display: block;
+}
+
+.helptext {
+	font-size: 12px;
 }
