@@ -33,4 +33,37 @@ def create_profile(sender, **kwargs):
     if kwargs['created']:
         user_profile = UserProfileModel.objects.create(userID=kwargs['instance'])
 
+
+## --- Jamie Added Stuff for Maps ---
+
+class FeatureLocationModel(models.Model):
+    ## This Model will hold all the locations that the admin users want the
+    ## service to work for, such as 'brisbane', 'melbourne'
+    
+    locationId = models.CharField(max_length=50, default='') #what will search in google
+    # because it's meant to be a small ID
+    locationName = models.CharField(max_length=50, default='') #what will dispaly UI
+
+    def __unicode__(self):
+        return self.locationName ## added as placeholder because i dont know what
+                                 ## it does
+
+    
+class userTypeAccessModel(models.Model):
+    ## This Model will hold all the type of locations
+    
+    userType = models.CharField(max_length=10, default='') 
+    accessableFeatures = models.CharField(max_length=100000, default='') ## a list
+    ## with all the type of locations that the user can access
+
+    def __unicode__(self):
+        return self.userType ## added as placeholder because i dont know what
+                                 ## it does
+    
+
+
+
+
+
+## xxx Jamie Added Stuff for Maps xxx
 post_save.connect(create_profile, sender=UserProfileModel)
