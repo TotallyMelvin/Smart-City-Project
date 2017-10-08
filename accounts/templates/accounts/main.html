@@ -15,10 +15,38 @@
 using the provided html on the website:
 <br>
 https://developers.google.com/maps/documentation/embed/start</p>
+
+<!--- go through each type of user, and if they are that type , 
+display their specific map page, the last version, if they are
+not any type of user is just as a fail safe and testing --->
+{% if user.user_type is student %}
+{{ print user.user_type }}
+<p> You have access to Student Features </p>
 {% csrf_token %}
-{{ form.as_p }}
+
+{{ general_form.as_p }}
 
 <button type ="submit">Submit</button>
+
+{% elif user.user_type is "tourist" %}
+
+<p> You have access to Tourist Features </p>
+{% csrf_token %}
+
+{{ general_form.as_p }}
+
+{% else %}
+
+<p> You have access to Basic Features </p>
+{% csrf_token %}
+
+{{ general_form.as_p }}
+
+{% endif %}
+
+
+
+
 </form>
 
 

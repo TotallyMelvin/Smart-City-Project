@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from accounts.forms import UserForm, UserProfileForm, EditProfileForm, EditProfileFormOptional, MapForm, UserLoginForm, RegistrationForm
+from accounts.forms import *
 from django.views.generic import TemplateView
 #to translate the user input into useable links for google
 from accounts.codesnippets import get_google_url
@@ -76,19 +76,20 @@ def register(request):
 
 class MapView(TemplateView): ## the maps page of the website
 
-    map_au_link = "https://www.google.com/maps/embed/v1/search?q=australia&key=AIzaSyCo8hPtObahI8239nap_CvlDo0mUTkqx6Q"
+    map_au_link = """https://www.google.com/maps/embed/v1/search?q=australia&key=AIzaSyC
+    o8hPtObahI8239nap_CvlDo0mUTkqx6Q"""
     template_name = 'accounts/main.html'
-
+    
     def get(self, request):
-        form = MapForm()
-        return render(request, self.template_name, {'form': form})
+        general_form = GeneralMapForm()
+        return render(request, self.template_name, {'general_form': general_form})
 
     def post(self, request):
 
-        form = MapForm(request.POST)
-        if form.is_valid():
-            search_location = form.cleaned_data['location']
-            search_data = form.cleaned_data['selected_options']
+        general_form = GeneralMapForm(request.POST)
+        if general_form.is_valid():
+            search_location = general_form.cleaned_data['location']
+            search_data = general_form.cleaned_data['selected_options']
 
         ## update the google link
         search_link_string = get_google_url(search_location, search_data)
@@ -96,7 +97,8 @@ class MapView(TemplateView): ## the maps page of the website
         self.map_au_link = search_link_string
 
         ## return to the UI
-        args = {'form': form, 'map_link': self.map_au_link}
+        args = {'general_form': general_form, 'map_link': self.map_au_link,
+                'student': 'student', 'tourist': 'tourist'}
         return render(request, self.template_name, args)
 
 def help(request):
@@ -147,3 +149,35 @@ def contact(request):
 
 def password_recovery(request):
     return render(request, 'accounts/password_recovery.html')
+
+##
+##def create_new_admin(request): ## Jamie
+##
+##    registered = False
+##    #if data is posted (from user submission) perform this
+##    if request.method =='POST':
+##        new_admin_form = UserForm(data=request.POST)
+##
+##
+##        if user_form.is_valid() and profile_form.is_valid():
+##            user = User.objects.create_user(
+##                          username=new_admin_form.cleaned_data['username'],
+##                          first_name=new_admin_form.cleaned_data['first_name'],
+##                          last_name=new_admin_form.cleaned_data['last_name'],
+##                          email=new_admin_form.cleaned_data['email'],
+##                          #password=user_form.cleaned_data['password'],)
+##                          password=new_admin_form.cleaned_data.get('password'),)
+##            # user = user_form.save()
+##            # user.set_password(user.password)
+##            user.save()
+##            registered = True
+##
+##        else:
+##            print('error') # user_form.errors, profile_form.errors
+##
+##    else:
+##        new_admin_form = UserForm()
+##
+##    return render(request,
+##        'accounts/register.html',
+##        {'new_admin_form': new_admin_form, 'registered':registered})

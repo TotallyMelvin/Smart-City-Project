@@ -87,7 +87,63 @@ class ContactForm(forms.Form):
         widget=forms.Textarea
     )
 
-class MapForm(forms.Form):
+
+## Jamie
+def return_general_features():
+    all_feature_list = [] ##base black items for the UI
+
+    all_general_features = userTypeAccessModel.objects.filter(
+        userType='general').values() ## get
+    print(all_general_features)
+    for feature_set in all_general_features: ## there should only be one
+        
+        ## just doing this to access it
+        all_general = feature_set.get('accessableFeatures') #the string
+        ## containing all features separated by a ,
+        split_ver = all_general.split(',')## split into individual (list format)
+        for feature in split_ver: ## make form readable for UI
+            entry = [[feature, feature]]
+
+            all_feature_list = all_feature_list + entry ## add all to the UI
+    return all_feature_list
+
+
+def return_locations():
+    all_loc_list = [['', 'Select City']] ##base items for the UI
+    all_loc_data = FeatureLocationModel.objects.all().values() ## get
+    ## data from the models
+    for loc_entry in all_loc_data: ## for all the different locations
+        pass_list = [[loc_entry.get('locationId'), loc_entry.get(
+            'locationName')]] ##gathering the name to search for
+        ## google and the name to display to UI
+        all_loc_list = all_loc_list + pass_list ## pass into list
+        ## for the form
+    return all_loc_list
+    
+
+def get_user_type_features():
+    all_feature_list = [] ##base black items for the UI
+
+    all_features = userTypeAccessModel.objects.filter(
+        userType='general').values() ## get
+    print(all_features)
+    for feature_set in all_features: ## there should only be one
+        
+        ## just doing this to access it
+        all_features = feature_set.get('accessableFeatures') #the string
+        ## containing all features separated by a ,
+        split_ver = all_features.split(',')## split into individual (list format)
+        for feature in split_ver: ## make form readable for UI
+            entry = [[feature, feature]]
+
+            all_feature_list = all_feature_list + entry ## add all to the UI
+    return all_feature_list
+
+
+class GeneralMapForm(forms.Form): ## Jamie
+    ## This is a TEMPLATE Class that is made without 'user types'
+    ##      new classes for each user type should be made!
+    
     ## This sections shows the GUI and selection process to the user
     ## based on the selections from these aspects, the solution should
     ## then use the "get_google_url" method (interactive_map/views) to
@@ -101,60 +157,84 @@ class MapForm(forms.Form):
     ## in next strints, this GUI should be expanded so that users can
     ## pick from 'student', 'tourist', etc and get more options (this,
     ## as well, should be connected to the database!
-
-
     ## LOCATIONS - database read
-    all_loc_list = [['', 'Select City']] ##base items for the UI
-    all_loc_data = FeatureLocationModel.objects.all().values() ## get
-    ## data from the models
-    for loc_entry in all_loc_data: ## for all the different locations
-        pass_list = [[loc_entry.get('locationId'), loc_entry.get(
-            'locationName')]] ##gathering the name to search for
-        ## google and the name to display to UI
-        all_loc_list = all_loc_list + pass_list ## pass into list
-        ## for the form
-
-    print(all_loc_list)
-
-    ## GENERAL - database read
-    ##      get general options for all users (in model: cityInfo
-
-            ## example of hard-coded:
-                    #general_options = (
-                        #("park", "Parks"),
-                        #("zoo", "Zoos"),
-                        #("tourist attractions", "Tourist Attractions"),
-                        #("mall", "Malls"),
-                        #("museum", "Museums"),
-                        #("restaurant", "Restaurants")
-                        #)
-            ##
-
-    all_feature_list = [] ##base black items for the UI
-
-    all_general_features = userTypeAccessModel.objects.filter(
-        userType='cityInfo').values() ## get
-    print(all_general_features)
-
-    for feature_set in all_general_features: ## there should only be one
-        ## just doing this to access it
-        all_general = feature_set.get('accessableFeatures') #the string
-        ## containing all features separated by a ,
-        print(all_general) ## test
-        split_ver = all_general.split(',')## split into individual (list format)
-        for feature in split_ver: ## make form readable for UI
-            entry = [[feature, feature]]
-
-            all_feature_list = all_feature_list + entry ## add all to the UI
-    print(all_feature_list) ## test
-
+    locations = return_locations()
+    print(locations)
+    
+    general_features = return_general_features()
+    print(general_features)
+    
     ## GENERAL CITY INFORMATION USER STORY
-
     location = forms.ChoiceField(label = "Choose location",
                                  initial = 'Choose location',
-                                 choices = all_loc_list,
+                                 choices = locations,
                                  required = True)
-
+    
     selected_options = forms.MultipleChoiceField(widget=
                                                  forms.CheckboxSelectMultiple,
-                                                 choices = all_feature_list)
+                                                 choices = general_features)
+
+
+class StudentMapForm(forms.Form): ## Jamie
+    ## This is the student version of the map
+    locations = return_locations()
+    print(locations)
+    
+    general_features = return_general_features()
+    print(general_features)
+    
+    ## GENERAL CITY INFORMATION USER STORY
+    location = forms.ChoiceField(label = "Choose location",
+                                 initial = 'Choose location',
+                                 choices = locations,
+                                 required = True)
+    
+    selected_options = forms.MultipleChoiceField(widget=
+                                                 forms.CheckboxSelectMultiple,
+                                                 choices = general_features)
+
+class TouristMapForm(forms.Form): ## Jamie
+    ## This is the tourist version of the map
+    locations = return_locations()
+    print(locations)
+    
+    general_features = return_general_features()
+    print(general_features)
+    
+    ## GENERAL CITY INFORMATION USER STORY
+    location = forms.ChoiceField(label = "Choose location",
+                                 initial = 'Choose location',
+                                 choices = locations,
+                                 required = True)
+    
+    selected_options = forms.MultipleChoiceField(widget=
+                                                 forms.CheckboxSelectMultiple,
+                                                 choices = general_features)
+
+ 
+
+##class AdminCreationForm(forms.Form): ## Jamie  ## form for the add admin page
+##    new_admin_email = forms.EmailField(required=True)
+##
+##    class Meta:
+##        model = User
+##        fields = (
+##        'username',
+##        'first_name',
+##        'last_name',
+##        'email',
+##        'password1',
+##        'password2',
+##        )
+##
+##    def save(self, commit=True):
+##        user = super(RegistrationForm, self).save(commit=False)
+##        user.first_name = self.cleaned_data['first_name']
+##        user.last_name = self.cleaned_data['last_name']
+##        user.email = self.cleaned_data['email']
+##        if commit:
+##            user.save()
+##        return user
+
+
+## Jamie end
