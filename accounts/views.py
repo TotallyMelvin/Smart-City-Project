@@ -1,18 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from accounts.forms import RegistrationForm, ExtraInfoForm, EditProfileForm
-from accounts.forms import MapForm, UserLoginForm
+from django.contrib.auth.models import User
+from accounts.forms import UserForm, UserProfileForm, EditProfileForm, EditProfileFormOptional, MapForm, UserLoginForm, RegistrationForm
 from django.views.generic import TemplateView
 #to translate the user input into useable links for google
 from accounts.codesnippets import get_google_url
-from django.contrib.auth.forms import UserChangeForm
 #contact
 from accounts.forms import ContactForm
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect
 from django.template import Context
 from django.template.loader import get_template
-
 def home(request):
     form = UserLoginForm(request.POST)
     args = {'form': form}
@@ -26,48 +24,55 @@ def profile(request):
 
 def edit_profile(request):
     if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance=request.user)
+        edit_form = EditProfileForm(request.POST, instance=request.user)
+        edit_form_optional = EditProfileFormOptional(request.POST, instance=request.user)
 
-        if form.is_valid():
-            form.save()
+        if edit_form.is_valid() and edit_form_optional.is_valid():
+            edit_form.save()
+            edit_form_optional.save()
             return redirect('/home/profile')
 
     else:
-        form = EditProfileForm(instance=request.user)
-        args = {'form': form}
+        edit_form = EditProfileForm(instance=request.user)
+        edit_form_optional = EditProfileFormOptional(request.POST, instance=request.user)
+        args = {'edit_form': edit_form, 'edit_form_optional': edit_form_optional}
         return render(request, 'accounts/edit_profile.html', args)
 
 def register(request):
-    #if data is posted (from user submission) perform this
-    if request.method =='POST':
-        #form reads user input
-        form = RegistrationForm(request.POST)
-        #if the form contains valid data perform this
-        if form.is_valid():
-            #save information and redirect to specified location
-            form.save()
-            return redirect('/home/extraInfo')
-    #if request method is 'get' generate empty form
-    else:
-        form = RegistrationForm()
-        args = {'form': form}
-        return render(request, 'accounts/register.html', args)
 
-def extraInfo(request):
+    registered = False
     #if data is posted (from user submission) perform this
     if request.method =='POST':
-        #form reads user input
-        form = ExtraInfoForm(request.POST)
-        #if the form contains valid data perform this
-        if form.is_valid():
-            #save information and redirect to specified location
-            form.save()
-            return redirect('home/')
-    #if request method is 'get' generate empty form
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = User.objects.create_user(
+                          username=user_form.cleaned_data['username'],
+                          first_name=user_form.cleaned_data['first_name'],
+                          last_name=user_form.cleaned_data['last_name'],
+                          email=user_form.cleaned_data['email'],
+                          #password=user_form.cleaned_data['password'],)
+                          password=user_form.cleaned_data.get('password'),)
+            # user = user_form.save()
+            # user.set_password(user.password)
+            user.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+            registered = True
+
+        else:
+            print('error') # user_form.errors, profile_form.errors
+
     else:
-        form = ExtraInfoForm()
-        args = {'form': form}
-        return render(request, 'accounts/extrainfo.html', args)
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+    return render(request,
+        'accounts/register.html',
+        {'user_form': user_form, 'profile_form': profile_form, 'registered':registered})
 
 class MapView(TemplateView): ## the maps page of the website
 
@@ -75,17 +80,16 @@ class MapView(TemplateView): ## the maps page of the website
     template_name = 'accounts/main.html'
 
     def get(self, request):
-
         form = MapForm()
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
+
         form = MapForm(request.POST)
         if form.is_valid():
             search_location = form.cleaned_data['location']
             search_data = form.cleaned_data['selected_options']
 
-    
         ## update the google link
         search_link_string = get_google_url(search_location, search_data)
 
@@ -115,7 +119,7 @@ def contact(request):
             , '')
             form_content = request.POST.get('content', '')
 
-            # Email the profile with the 
+            # Email the profile with the
             # contact information
             template = get_template('contact_template.txt')
             context = Context({
@@ -134,7 +138,7 @@ def contact(request):
             )
             email.send()
             return redirect('contact')
-    
+
     return render(request, 'accounts/contact.html', {
         'form': form_class,
     })

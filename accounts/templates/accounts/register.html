@@ -4,19 +4,31 @@
 <!-- include the navBar. Change navBar at navBar.html -->
 {% include 'accounts/navBar.html' %}
 <!-- Body -->
-<div><br><br><br></div>
+<div>
+  <br><br><br>
+</div>
 <div class = 'rego container-fluid'>
-<div class="row">
-	<div class="col-sm-1"></div>
-	<div class="col-sm-6 register">
-  <h2>Account Registration</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <br>
-  <button type="submit">Register</button>
-</form>
-</div>
-</div>
+  <div class="row">
+	  <div class="col-sm-1">
+      <!-- -->
+    </div>
+    <div class="col-sm-6 register">
+      <h2>Register your account</h2>
+      {% if registered %}
+      <strong>Thank you for registering!</strong>
+      <a href="/home/">Return to homepage</a><br />
+      {% else %}
+      <strong>Register here!</strong><br />
+      <form id="user_form" method="post" action="/home/register/"
+      enctype="multipart/form">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <br>
+      <button type="submit" name="submit">Register</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock %}

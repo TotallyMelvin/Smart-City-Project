@@ -9,14 +9,19 @@
 <div class="row">
 	<div class="col-sm-1"></div>
 	<div class="col-sm-6 register">
-  <h2>Manage Your Profile</h2>
+  <h2>Register your account</h2>
 <form method="post">
-	{% csrf_token %}
-	{{ edit_form.as_p }}
-	<!-- this causes a KeyError because password does not match the confirm password -->
-	<!-- talk to mustafa about this -->
-	<!-- edit_form_optional.as_p -->
-	<button type="submit">Submit</button>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <br>
+  <button type="submit">Register</button>
+    {% for form in forms.RegistrationForm%}
+    <label for="{{ radio.id_for_label }}">
+        {{ radio.choice_label }}
+        <span class="radio"> {{ radio.tag }}</span>
+    </label>
+    {% endfor %}
+
 </form>
 </div>
 </div>

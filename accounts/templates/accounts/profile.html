@@ -11,14 +11,19 @@
 	<div class="col-sm-6 register">
   <h2>Manage Your Profile</h2>
 <form method="post">
-  <p>Update your user credentials:</p>
-  <a href="/home/profile/edit_profile">Update</a>
+  <h2>Feel free to update your details below</h2>
+  <a href="/home/profile/edit_profile">Click here to update your details</a>
   <br><br>
-  <p>Current Details:</p>
   <p>Username: {{ user.username }}</p>
   <p>First Name: {{ user.first_name }}</p>
   <p>Last Name: {{ user.last_name }}</p>
   <p>Email Address: {{ user.email }}</p>
+
+	<p>Phone Number: {{ userProfile.phone_number }}</p>
+	<p>Street Number: {{ userProfile.street_number }}</p>
+	<p>Street Name: {{ userProfile.street_name }}</p>
+	<p>Suburb: {{ userProfile.suburb }}</p>
+	<p>Postcode: {{ userProfile.postcode }}</p>
 
 </form>
 </div>
