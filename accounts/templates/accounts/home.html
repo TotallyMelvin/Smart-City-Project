@@ -4,29 +4,35 @@
 {% include 'accounts/navBar.html' %}
 <div class="home">
 <br>
-<br>
-<br>
-<div class="container">
+<div class="container-fluid">
 <div class="row">
-	<div class="col-sm-6 about">
+	<div class="col-sm-12 header">
+		{% load static %}
+		<img class="logo" src="{% static "css/Images/logo.svg" %}" alt="Smart City Logo">
+		<p class="quote">"The premiere map search system."</p>
+		<img class="city" src="{% static "css/Images/city_scape.svg" %}" alt="Smart City Logo">	
+	<div class="box">
+	</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-5 about">
 		<h2>About Smart City Project</h2>
 		<p>The Smart City Project is a web based system which provides information on various types of locations in a number of cities in Australia.
 		The system caters to different types of users such as business, student and tourist users with the system only showing data relevant to you.
 		While the site is early in development, we hope that we will support more cities and locations in the near future.
 		</p>
 	</div>
-	<div class="col-sm-1">
-	</div>
-
-	<div class="col-sm-5 login">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-4 login">
 		{% if user.is_anonymous %}
 			<h2>Login</h2>
 				<form method="post">
-				<p>Login to gain access to your personalised map</p>
 					{% csrf_token %}
 					{{ form.as_p }}
 					<br>
-					<button type="submit">Login</button>
+					<button class="login_bttn" type="submit">Login</button>
 
 				</form>
 		{% endif %}

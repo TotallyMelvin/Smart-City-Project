@@ -18,6 +18,7 @@
 body {
 	background: #2380A5 !important;
     background-repeat: no-repeat;
+	overflow-x: hidden; 
 }
 
 html {
@@ -54,17 +55,69 @@ nav a:hover {
 	background: #2d5f72 !important; 
 }
 
+.navbar-brand {
+	font-family: 'Shrikhand', cursive;
+	font-size: 30px !important;
+	-webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: white;
+	color: #ea1515 !important;
+	margin-bottom: -15px !important;
+}
+
+/* Header Section CSS */
+.header {
+	background-image: url("Images/map_bg.png");
+	background-size: 150%;
+	z-index: -10;
+}
+
+.logo {
+	z-index: 5;
+	opacity: 1;
+	position: absolute;
+	height: auto;
+	width: 75%;
+	padding-left: 25%;
+	padding-top: 50px;
+}
+
+.quote {
+	font-size: 3vw;
+	color: white;
+	position: absolute;
+	z-index: 5;
+	text-align: center;
+	padding-top: 375px;
+	padding-left: 25%;
+}
+
+.box {
+	background: black;
+	opacity: 0.4;
+	margin-left: -15px;
+	margin-right: -15px;
+	z-index: -5;
+	padding-top: 200px;
+	padding-bottom: 450px;
+}
+
+.city {
+	position: absolute;
+	z-index: 2;
+	bottom: -2px;
+	width: 100%;
+}
+
 /* About Section CSS */
 .about {
-	background: linear-gradient(0deg, #1c1c1c, #363636);
+	background: #2d5f72;
 	left: 0;
 	color: white;
 	padding-bottom: 100px;
-	margin-top: 50px;
+	margin-top: 80px;
 	border-radius: 8px;
 	margin-left: 20px;
 	margin-right: 20px;
-	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
 	z-index: 10;
 	position: absolute;
 	right: 0;
@@ -72,23 +125,25 @@ nav a:hover {
 }
 
 .about p {
-	background: white;
 	margin-top: 15px;
 	margin-left: -14.75px;
 	margin-right: -14.75px;
 	margin-bottom: -50px;
 	padding-top: 30px;
-	padding-bottom: 50px;
 	padding-left: 20px;
 	padding-right: 20px;
-	color: grey;
+	color: white;
 	font-size: 16px;
 }
 
 .about h2{
-	padding-top: 5px;
-	color: grey;
+	padding-top: 20px;
 	text-shadow: -1px -1px 0px #141414;
+	font-family: 'Shrikhand', cursive;
+	font-size: 40px;
+	-webkit-text-stroke-width: 1.5px;
+   -webkit-text-stroke-color: white;
+	color: #ea1515;
 }
 
 
@@ -111,15 +166,12 @@ nav a:hover {
 
 /* Login Section CSS */
 .login {
-	background: linear-gradient(0deg, #1c1c1c, #363636);
-	color: white;
-	margin-top: 50px;
+	margin-top: 80px;
 	border-radius: 12px;
 	margin-left: 20px;
-	margin-right: 20px;
+	margin-right: 10px;
 	margin-bottom: 100px;
 	padding-bottom: 50px;
-	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
 }
 
 .login input {
@@ -127,8 +179,7 @@ nav a:hover {
 }
 
 .login form {
-	background: white;
-	color: grey;
+	color: white;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 15px;
@@ -137,13 +188,31 @@ nav a:hover {
 }
 
 .login h2{
-	padding-top: 5px;
-	color: grey;
+	padding-top: 20px;
 	text-shadow: -1px -1px 0px #141414;
+	font-family: 'Shrikhand', cursive;
+	font-size: 40px;
+	-webkit-text-stroke-width: 1.5px;
+   -webkit-text-stroke-color: white;
+	color: #ea1515;
 }
 
 .login #id_username, #id_password {
 	display: block;
+	width: 50%;
+}
+
+ul.errorlist {
+	display: none !important;
+}
+
+.login_bttn {
+	color: white;
+	background: #424242;
+	border: 2px solid white;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 /* Register Section CSS */
