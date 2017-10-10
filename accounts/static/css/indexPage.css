@@ -16,12 +16,42 @@
 }
 
 body {
-	background: #00b2ff !important;
+	background: #2380A5 !important;
     background-repeat: no-repeat;
 }
 
 html {
 	height: 100% !important;
+}
+
+/* Navigation Bar Section CSS */
+.navbar {
+	background: #2380A5;
+	margin-bottom: -5px !important;
+	box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+nav a {
+	color: white !important;
+}
+
+nav a:hover {
+	color: grey !important;
+	background: #2d5f72 !important;
+}
+
+.navbar-toggle.collapsed {
+	border-color: #2d5f72 !important;
+	background: #2380A5 !important;
+}
+
+.navbar-toggle {
+	border-color: #2d5f72 !important;
+	background: #2d5f72 !important; 
+}
+
+.navbar-toggle:hover {
+	background: #2d5f72 !important; 
 }
 
 /* About Section CSS */
