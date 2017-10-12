@@ -82,7 +82,9 @@ class MapView(TemplateView): ## the maps page of the website
     
     def get(self, request):
         general_form = GeneralMapForm()
-        return render(request, self.template_name, {'general_form': general_form})
+        args = {'general_form': general_form, 'map_link': self.map_au_link,
+                'student': 'student', 'tourist': 'tourist'}
+        return render(request, self.template_name, args)
 
     def post(self, request):
 
