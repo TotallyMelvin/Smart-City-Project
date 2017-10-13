@@ -24,17 +24,17 @@ https://developers.google.com/maps/documentation/embed/start
 
 {% if user.userprofile.user_type == 'tourist' %}
 <p> displayed form is the tourist form </p>
-{{ form.as_p }}
+{{ base_form.as_p }}
 
 {% elif user.userprofile.user_type == 'student' %}
 <p> displayed form is the student form </p>
 
-{{ form.as_p }}
+{{ base_form.as_p }}
 
 {% else %}
 <p> displayed form is the general form </p>
 
-{{ form.as_p }}
+{{ base_form.as_p }}
 
 {% endif %}
 

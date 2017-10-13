@@ -80,15 +80,15 @@ class MapView(TemplateView): ## the maps page of the website
     template_name = 'accounts/main.html'
 
     def get(self, request):
-        form = GeneralMapForm()
-        return render(request, self.template_name, {'form': form})
+        base_form = GeneralMapForm()
+        return render(request, self.template_name, {'base_form': base_form})
 
     def post(self, request):
 
-        form = GeneralMapForm(request.POST)
-        if form.is_valid():
-            search_location = form.cleaned_data['location']
-            search_data = form.cleaned_data['selected_options']
+        base_form = GeneralMapForm(request.POST)
+        if base_form.is_valid():
+            search_location = base_form.cleaned_data['location']
+            search_data = base_form.cleaned_data['selected_options']
 
         ## update the google link
         search_link_string = get_google_url(search_location, search_data)
@@ -96,7 +96,7 @@ class MapView(TemplateView): ## the maps page of the website
         self.map_au_link = search_link_string
 
         ## return to the UI
-        args = {'form': form, 'map_link': self.map_au_link}
+        args = {'base_form': base_form, 'map_link': self.map_au_link}
         return render(request, self.template_name, args)
 
 def help(request):

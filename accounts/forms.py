@@ -89,23 +89,7 @@ class ContactForm(forms.Form):
 
 
 ## Jamie
-def return_general_features():
-    all_feature_list = [] ##base black items for the UI
 
-    all_general_features = userTypeAccessModel.objects.filter(
-        userType='general').values() ## get
-    print(all_general_features)
-    for feature_set in all_general_features: ## there should only be one
-        
-        ## just doing this to access it
-        all_general = feature_set.get('accessableFeatures') #the string
-        ## containing all features separated by a ,
-        split_ver = all_general.split(',')## split into individual (list format)
-        for feature in split_ver: ## make form readable for UI
-            entry = [[feature, feature]]
-
-            all_feature_list = all_feature_list + entry ## add all to the UI
-    return all_feature_list
 
 
 def return_locations():
@@ -121,11 +105,11 @@ def return_locations():
     return all_loc_list
     
 
-def get_user_type_features():
+def get_user_type_features(user_type):
     all_feature_list = [] ##base black items for the UI
 
     all_features = userTypeAccessModel.objects.filter(
-        userType='general').values() ## get
+        userType=user_type).values() ## get
     print(all_features)
     for feature_set in all_features: ## there should only be one
         
@@ -161,7 +145,7 @@ class GeneralMapForm(forms.Form): ## Jamie
     locations = return_locations()
     print(locations)
     
-    general_features = return_general_features()
+    general_features = get_user_type_features('cityInfo')
     print(general_features)
     
     ## GENERAL CITY INFORMATION USER STORY
