@@ -14,9 +14,29 @@
 <p>This is a test of the google maps aspects from simply
 using the provided html on the website:
 <br>
-https://developers.google.com/maps/documentation/embed/start</p>
+https://developers.google.com/maps/documentation/embed/start
+{{ user }}
+<p>User type: {{ user.userprofile.user_type }}</p>
+
+</p>
+<!--- keep the csrf token security above all form options --->
 {% csrf_token %}
+
+{% if user.userprofile.user_type == 'tourist' %}
+<p> displayed form is the tourist form </p>
 {{ form.as_p }}
+
+{% elif user.userprofile.user_type == 'student' %}
+<p> displayed form is the student form </p>
+
+{{ form.as_p }}
+
+{% else %}
+<p> displayed form is the general form </p>
+
+{{ form.as_p }}
+
+{% endif %}
 
 <button type ="submit">Submit</button>
 </form>
