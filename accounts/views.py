@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from accounts.forms import UserForm, UserProfileForm, EditProfileForm, EditProfileFormOptional, MapForm, UserLoginForm, RegistrationForm
+from accounts.forms import *
 from django.views.generic import TemplateView
 #to translate the user input into useable links for google
 from accounts.codesnippets import get_google_url
@@ -80,12 +80,12 @@ class MapView(TemplateView): ## the maps page of the website
     template_name = 'accounts/main.html'
 
     def get(self, request):
-        form = MapForm()
+        form = GeneralMapForm()
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
 
-        form = MapForm(request.POST)
+        form = GeneralMapForm(request.POST)
         if form.is_valid():
             search_location = form.cleaned_data['location']
             search_data = form.cleaned_data['selected_options']
