@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from accounts.forms import UserForm, UserProfileForm, EditProfileForm, EditProfileFormOptional, MapForm, UserLoginForm, RegistrationForm
+from accounts.forms import *
 from django.views.generic import TemplateView
 #to translate the user input into useable links for google
 from accounts.codesnippets import get_google_url
@@ -80,24 +80,61 @@ class MapView(TemplateView): ## the maps page of the website
     template_name = 'accounts/main.html'
 
     def get(self, request):
-        form = MapForm()
-        return render(request, self.template_name, {'form': form})
+        base_form = GeneralMapForm()
+        tourist_form = TouristMapForm()
+        student_form = StudentMapForm()
+        args = {'base_form': base_form, 'tourist_form' : tourist_form, 'student_form': student_form}
+        return render(request, self.template_name, args)
 
     def post(self, request):
+        user_type = request.POST.get('active_user_type')
+        
+        if user_type == 'tourist':
+            print('is tourist')
+            tourist_form = TouristMapForm(request.POST)
+            if tourist_form.is_valid():
+                search_location = tourist_form.cleaned_data['location']
+                search_data = tourist_form.cleaned_data['selected_options']
 
-        form = MapForm(request.POST)
-        if form.is_valid():
-            search_location = form.cleaned_data['location']
-            search_data = form.cleaned_data['selected_options']
+            ## update the google link
+            search_link_string = get_google_url(search_location, search_data)
 
-        ## update the google link
-        search_link_string = get_google_url(search_location, search_data)
+            self.map_au_link = search_link_string
 
-        self.map_au_link = search_link_string
+            ## return to the UI
+            args = {'tourist_form': tourist_form, 'map_link': self.map_au_link}
+            return render(request, self.template_name, args)
 
-        ## return to the UI
-        args = {'form': form, 'map_link': self.map_au_link}
-        return render(request, self.template_name, args)
+        elif user_type == 'student':
+            print('is student')
+            student_form = StudentMapForm(request.POST)
+            if student_form.is_valid():
+                search_location = student_form.cleaned_data['location']
+                search_data = student_form.cleaned_data['selected_options']
+
+            ## update the google link
+            search_link_string = get_google_url(search_location, search_data)
+
+            self.map_au_link = search_link_string
+
+            ## return to the UI
+            args = {'student_form': student_form, 'map_link': self.map_au_link}
+            return render(request, self.template_name, args)
+
+        else:
+            base_form = GeneralMapForm(request.POST)
+            if base_form.is_valid():
+                search_location = base_form.cleaned_data['location']
+                search_data = base_form.cleaned_data['selected_options']
+
+            ## update the google link
+            search_link_string = get_google_url(search_location, search_data)
+
+            self.map_au_link = search_link_string
+
+            ## return to the UI
+            args = {'base_form': base_form, 'map_link': self.map_au_link}
+            return render(request, self.template_name, args)
 
 def help(request):
     return render(request, 'accounts/help.html')
@@ -147,3 +184,10 @@ def contact(request):
 
 def password_recovery(request):
     return render(request, 'accounts/password_recovery.html')
+
+## Jamie - add admin
+def add_admin(request):
+    form = AdminCreationForm(request.POST)
+    args = {'form': form}
+    return render(request, 'accounts/add_admin.html', args)
+

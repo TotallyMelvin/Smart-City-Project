@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^help/$', views.help, name='help'),
     url(r'^help/contact/$', views.contact, name='contact'),
     url(r'^help/password_recovery/$', views.password_recovery, name='password_recovery'),
+    url(r'^addadmin/$', views.add_admin, name='add_admin'),
 ]
