@@ -7,12 +7,12 @@
 <div>
   <br><br><br>
 </div>
-<div class = 'rego container-fluid'>
+<div class = 'rego container-fluid register'>
   <div class="row">
-	  <div class="col-sm-1">
+	  <div class="col-sm-3">
       <!-- -->
     </div>
-    <div class="col-sm-6 register">
+    <div class="col-sm-6 border">
       <h2>Register your account</h2>
       {% if registered %}
       <strong>Thank you for registering!</strong>
@@ -21,12 +21,12 @@
       <form id="user_form" method="post" action="/home/register/"
       enctype="multipart/form">
       {% csrf_token %}
-	  <h3>Required Information:</h3>
+	  <h3 class="required">Required Information:</h3>
       {{ user_form.as_p }}
 	  <h3 class="optional">Optional Information:</h3>
       {{ profile_form.as_p }}
       <br>
-      <button class="register_bttn" type="submit" name="submit">Register</button>
+      <button class="form_bttn" type="submit" name="submit">Register</button>
       </form>
       {% endif %}
     </div>

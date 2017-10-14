@@ -15,9 +15,9 @@
 	</div>
 	</div>
 </div>
-<div class="row">
+<div class="row home">
 	<div class="col-sm-1"></div>
-	<div class="col-sm-5 about">
+	<div class="col-sm-5 border">
 		<h2>About Smart City Project</h2>
 		<p>The Smart City Project is a web based system which provides information on various types of locations in a number of cities in Australia.
 		The system caters to different types of users such as business, student and tourist users with the system only showing data relevant to you.
@@ -25,14 +25,14 @@
 		</p>
 	</div>
 	<div class="col-sm-1"></div>
-	<div class="col-sm-4 login">
+	<div class="col-sm-4 border">
 		{% if user.is_anonymous %}
 			<h2>Login</h2>
 				<form method="post">
 					{% csrf_token %}
 					{{ form.as_p }}
 					<br>
-					<button class="login_bttn" type="submit">Login</button>
+					<button class="form_bttn" type="submit">Login</button>
 
 				</form>
 		{% endif %}
