@@ -184,3 +184,10 @@ def contact(request):
 
 def password_recovery(request):
     return render(request, 'accounts/password_recovery.html')
+
+## Jamie - add admin
+def add_admin(request):
+    form = AdminCreationForm(request.POST)
+    args = {'form': form}
+    return render(request, 'accounts/add_admin.html', args)
+
