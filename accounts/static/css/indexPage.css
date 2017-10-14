@@ -43,7 +43,7 @@ html {
 }
 
 .border p {
-	margin-top: 15px;
+	margin-top: 10px;
 	margin-left: -14.75px;
 	margin-right: -14.75px;
 	padding-top: 30px;
@@ -172,15 +172,8 @@ nav a:hover {
 	margin-bottom: 40px;
 }
 
-/* Welcome Section CSS */
-.welcome p {
-	background: white;
-	color: grey;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	padding-left: 15px;
-	margin-left: -14.75px;
-	margin-right: -14.75px;
+.logout {
+	margin-bottom: 40px;
 }
 
 /* Footer Section CSS */
@@ -228,10 +221,30 @@ ul.errorlist {
 .form_bttn:hover {
 	color: grey;
 	border: 2px solid grey;
+	text-decoration: none;
 }
 
 .login_image {
 	margin-top: 40px;
+}
+
+/* Logout Section CSS */
+.logout a {
+	color: white;
+	background: #424242;
+	border: 2px solid white;
+	padding: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 40px;
+	display: inline-block;
+}
+
+.logout a:hover {
+	color: grey;
+	border: 2px solid grey;
+	text-decoration: none;
 }
 
 /* Register Section CSS */
@@ -267,6 +280,24 @@ ul.errorlist {
 	position: absolute;
 	margin-left: 15px;
 	margin-top: 190px;
+}
+
+.register a {
+	color: white;
+	background: #424242;
+	border: 2px solid white;
+	padding: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 40px;
+	display: inline-block;
+}
+
+.register a:hover {
+	color: grey;
+	border: 2px solid grey;
+	text-decoration: none;
 }
 
 /* Help Section CSS */
@@ -314,38 +345,6 @@ ul.errorlist {
 }
 
 /* Map Section CSS */
-.map_options {
-	background: linear-gradient(0deg, #1c1c1c, #363636);
-	left: 0;
-	color: white;
-	padding-bottom: 50px;
-	margin-top: 50px;
-	border-radius: 8px;
-	margin-left: 20px;
-	margin-right: 20px;
-	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
-	z-index: 10;
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
-.map_options h2{
-	padding-top: 5px;
-	color: grey;
-	text-shadow: -1px -1px 0px #141414;
-}
-
-.map_options form {
-	background: white;
-	color: grey;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	padding-left: 15px;
-	margin-left: -14.75px;
-	margin-right: -14.75px;
-}
-
 .map {
 	margin-bottom: 100px;
 }
@@ -354,48 +353,39 @@ ul.errorlist {
 	list-style: none;
 }
 
+#id_location {
+	color: grey;
+}
+
 /* Profile Section CSS */
-.edit_profile {
-	background: linear-gradient(0deg, #1c1c1c, #363636);
-	left: 0;
+.profile a {
+	color: white;
+	background: #424242;
+	border: 2px solid white;
+	padding: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-bottom: 40px;
+	display: inline-block;
+}
+
+.profile a:hover {
 	color: grey;
-	padding-bottom: 50px;
-	margin-top: 50px;
-	border-radius: 8px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-bottom: 100px;
-	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
-	z-index: 10;
+	border: 2px solid grey;
+	text-decoration: none;
 }
 
-.edit_profile form {
-	background: white;
-	margin-top: 15px;
-	margin-left: -14.75px;
-	margin-right: -14.75px;
-	padding-top: 30px;
-	padding-left: 20px;
-	padding-right: 20px;
-	padding-bottom: 30px;
-	color: grey;
-	font-size: 16px;
-}
-
-.edit_profile h2{
-	padding-top: 5px;
-	color: grey;
-	text-shadow: -1px -1px 0px #141414;
-}
-
-.edit_profile p{
-	padding-bottom: 20px;
-}
-
-.edit_profile #id_username, #id_first_name, #id_last_name, #id_email, #id_password1, #id_password2 {
+#id_username, #id_first_name, #id_last_name, #id_email {
 	display: block;
+}
+
+#id_password {
+	margin-left: 15px;
 }
 
 .helptext {
 	font-size: 12px;
+	margin-left: 15px;
 }

@@ -5,10 +5,10 @@
 {% include 'accounts/navBar.html' %}
 <!-- Body -->
 <div><br><br><br></div>
-<div class = 'rego container-fluid'>
+<div class = 'container-fluid edit_profile'>
 <div class="row">
 	<div class="col-sm-1"></div>
-	<div class="col-sm-6 register">
+	<div class="col-sm-6 border">
   <h2>Manage Your Profile</h2>
 <form method="post">
 	{% csrf_token %}
@@ -16,7 +16,7 @@
 	<!-- this causes a KeyError because password does not match the confirm password -->
 	<!-- talk to mustafa about this -->
 	<!-- edit_form_optional.as_p -->
-	<button type="submit">Submit</button>
+	<button class="form_bttn" type="submit">Submit</button>
 </form>
 </div>
 </div>
