@@ -227,25 +227,22 @@ ul.errorlist {
 
 /* Register Section CSS */
 .register {
-	background: linear-gradient(0deg, #1c1c1c, #363636);
+	background: #2d5f72;
 	left: 0;
-	color: grey;
+	color: white;
 	padding-bottom: 50px;
 	margin-top: 50px;
 	border-radius: 8px;
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-bottom: 100px;
-	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
 	z-index: 10;
 }
 
 .register form {
-	background: white;
-	margin-top: 15px;
 	margin-left: -14.75px;
 	margin-right: -14.75px;
-	padding-top: 30px;
+	padding-top: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-bottom: 30px;
@@ -254,21 +251,63 @@ ul.errorlist {
 }
 
 .register h2{
-	padding-top: 5px;
-	color: grey;
+	padding-top: 20px;
 	text-shadow: -1px -1px 0px #141414;
+	font-family: 'Shrikhand', cursive;
+	font-size: 40px;
+	-webkit-text-stroke-width: 1.5px;
+   -webkit-text-stroke-color: white;
+	color: #ea1515;
+	margin-left: 20px;
 }
 
 .register p{
 	padding-bottom: 20px;
+	color: white;
 }
 
 .register #id_username, #id_first_name, #id_last_name, #id_email, #id_password1, #id_password2 {
 	display: block;
 }
 
+.register #id_phone_number, #id_street_number, #id_street_name, #id_suburb, #id_postcode {
+	display: block;
+}
+
 .helptext {
 	font-size: 12px;
+	color: white;
+}
+
+#id_user_type {
+	list-style: none !important;
+	color: white !important;
+	margin-left: -20px;
+	margin-top: -20px;
+	margin-bottom: 60px;
+}
+
+.register h3 {
+	color: white;
+}
+
+.optional {
+	position: absolute;
+	margin-top: 170px;
+}
+
+.register_bttn {
+	color: white;
+	background: #424242;
+	border: 2px solid white;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.register_bttn:hover {
+	color: grey;
+	border: 2px solid grey;
 }
 
 /* Help Section CSS */
@@ -281,7 +320,6 @@ ul.errorlist {
 	border-radius: 8px;
 	margin-left: 20px;
 	margin-right: 20px;
-	box-shadow: 4px 4px 15px 1px rgba(0, 0, 0, 0.42);
 	z-index: 10;
 	position: absolute;
 	right: 0;

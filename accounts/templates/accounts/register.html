@@ -18,14 +18,15 @@
       <strong>Thank you for registering!</strong>
       <a href="/home/">Return to homepage</a><br />
       {% else %}
-      <strong>Register here!</strong><br />
       <form id="user_form" method="post" action="/home/register/"
       enctype="multipart/form">
       {% csrf_token %}
+	  <h3>Required Information:</h3>
       {{ user_form.as_p }}
+	  <h3 class="optional">Optional Information:</h3>
       {{ profile_form.as_p }}
       <br>
-      <button type="submit" name="submit">Register</button>
+      <button class="register_bttn" type="submit" name="submit">Register</button>
       </form>
       {% endif %}
     </div>
