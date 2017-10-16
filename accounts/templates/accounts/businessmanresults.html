@@ -1,0 +1,19 @@
+{% block content %}
+<p> this is proof that the results can load
+
+once the user selects their city, this should 
+be filled by the entries that relate to that 
+city in the model, with small information 
+about each </p>
+
+<!--- go through all of the entries and
+
+print the relavent areas  --->
+
+{% for entry in all_entries %}
+	<h5> {{ entry.businessType }}: <a href=
+		"/home/business_feature/{{entry.id}}"> Click here to read more</a></h5>
+
+	{% endfor %}
+
+{% endblock %}	

@@ -36,3 +36,18 @@ class userTypeAccessModel(models.Model):
     def __unicode__(self):
         return self.userType ## added as placeholder because i dont know what
                                  ## it does
+
+class BusinessFeatureModel(models.Model):
+    ## This Model will hold all the type of locations
+    businessType = models.CharField(max_length=100, default='')
+    associatedCity = models.CharField(max_length=100, default='')
+    cityOrganisationalData = models.TextField()
+    stateAnalysis = models.TextField()
+    furtherReadings = models.TextField()
+    useMap = models.BooleanField()
+    optionalMapSearchInput = models.CharField(max_length=100, default='---')
+    
+    ## with all the type of locations that the user can access
+    def __unicode__(self):
+        return self.businessType ## added as placeholder because i dont know what
+                                 ## it does

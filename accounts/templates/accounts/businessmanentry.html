@@ -1,0 +1,17 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+
+	<h1> {{object.businessType}} </h1>
+	<h2> In City: {{object.associatedCity}} </h2>
+	<h3>Organisations:</h3>
+	<p>{{object.cityOrganisationalData}}</p>
+	<h3>Current State:</h3>
+	<p>{{object.stateAnalysis}}</p>
+	<h3>Read More (References):</h3>
+	<p>{{object.furtherReadings}}</p>
+	
+	
+	{{entry.stateAnalysis|safe|linebreaks}}
+
+{% endblock %}

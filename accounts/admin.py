@@ -5,3 +5,4 @@ from accounts.models import *
 admin.site.register(UserProfile)
 admin.site.register(FeatureLocationModel)
 admin.site.register(userTypeAccessModel)
+admin.site.register(BusinessFeatureModel)

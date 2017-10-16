@@ -136,6 +136,31 @@ class MapView(TemplateView): ## the maps page of the website
             args = {'base_form': base_form, 'map_link': self.map_au_link}
             return render(request, self.template_name, args)
 
+class BusinessView(TemplateView):## Jamie 
+
+    main_template = "accounts/businessman.html"
+    def get(self, request):
+        location_form = LocationSelectForm()
+        return render(request, self.main_template, {'location_form': location_form})
+
+    def post(self, request):
+        print(""" ------------------
+                there has been a post request
+                -------------------------""")
+        location_form = LocationSelectForm(request.POST)
+        if location_form.is_valid(): 
+            search_location = location_form.cleaned_data['location']
+        print(search_location)
+        ## get the entries that relate to the city 
+        all_entries = BusinessFeatureModel.objects.filter(associatedCity=search_location)
+        print(all_entries)
+       
+        
+        return render(request, self.main_template, {'location_form': location_form, 'all_entries': all_entries})
+
+    
+
+
 def help(request):
     return render(request, 'accounts/help.html')
 

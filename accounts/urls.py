@@ -1,7 +1,9 @@
 from django.conf.urls import url, include
 from . import views
+from django.views.generic import ListView, DetailView 
 from django.contrib.auth.views import login, logout
-from accounts.views import MapView
+from accounts.models import BusinessFeatureModel
+from accounts.views import MapView, BusinessView
 
 urlpatterns = [
     url(r'^$', views.home),
@@ -16,4 +18,7 @@ urlpatterns = [
     url(r'^help/contact/$', views.contact, name='contact'),
     url(r'^help/password_recovery/$', views.password_recovery, name='password_recovery'),
     url(r'^addadmin/$', views.add_admin, name='add_admin'),
+    url(r'^business_feature/$', BusinessView.as_view(), name='business'),
+    url(r'^business_feature/(?P<pk>\d+)$', DetailView.as_view(model = BusinessFeatureModel,
+                                                     template_name ='accounts/businessmanentry.html')),
 ]

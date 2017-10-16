@@ -202,10 +202,26 @@ class StudentMapForm(forms.Form): ## Jamie
                                                  choices = all_features)
 
 
+class LocationSelectForm(forms.Form): ## Jamie
+    ## this is the businessman specific features
+    ## there will be a drop down with the different locations, and
+    ## a serch button (button will be on the template side)
+    ## once the button is pressed, it returns the different
+    ## organisation types to the user,. which they have then click
+    ## to view the specifics of each
+    
+    locations = return_locations()
+
+    
+    ## locations
+    location = forms.ChoiceField(label = "Choose location",
+                                 initial = 'Choose location',
+                                 choices = locations,
+                                 required = True)
 
 
 
-class AdminCreationForm(forms.ModelForm): ## Jamie  ## form for the add admin page
+class AdminCreationForm(forms.ModelForm): ## Jamie  ## draft form for the add admin page
 
     class Meta:
         model = User
