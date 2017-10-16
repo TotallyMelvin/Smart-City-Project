@@ -381,7 +381,7 @@ ul.errorlist {
 	display: block;
 }
 
-#id_password {
+.edit_profile #id_password {
 	margin-left: 15px;
 }
 
