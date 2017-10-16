@@ -7,67 +7,49 @@
   <br>
 <div class="container map_options">
     <div class="row">
-<<<<<<< HEAD
-    	<div class="col-sm-5 border">
-			<h2>Smart City Maps</h2>
 
-			<form method = "post">
-			<p>This is a test of the google maps aspects from simply
-			using the provided html on the website:
-			https://developers.google.com/maps/documentation/embed/start</p>
-			{% csrf_token %}
-			{{ form.as_p }}
+	<div class="col-sm-6 border">
+	  <h2>Smart City Maps</h2>
 
-			<button class="form_bttn" type ="submit">Submit</button>
-			</form>
-		</div>
-<div class="col-sm-1"></div>
-=======
-    	<div class="col-sm-6 map_options">
-  <h2>Smart City Maps</h2>
+	<form method = "post">
+	<p>This is a test of the google maps aspects from simply
+	using the provided html on the website:
+	<br>
+	https://developers.google.com/maps/documentation/embed/start</p>
+	<p>Username: {{ user }}</p>
+	<p>User type: {{ user.userprofile.user_type }}</p>
+	<!--- keep the csrf token security above all form options --->
+	{% csrf_token %}
 
-<form method = "post">
-<p>This is a test of the google maps aspects from simply
-using the provided html on the website:
-<br>
-https://developers.google.com/maps/documentation/embed/start
-{{ user }}
-<p>User type: {{ user.userprofile.user_type }}</p>
+	{% if user.userprofile.user_type == 'tourist' %}
+	<p> The displayed form is the tourist form. </p>
+	{{ tourist_form.as_p }}
 
-</p>
-<!--- keep the csrf token security above all form options --->
-{% csrf_token %}
+	{% elif user.userprofile.user_type == 'student' %}
+	<p> The displayed form is the student form. </p>
 
-{% if user.userprofile.user_type == 'tourist' %}
-<p> displayed form is the tourist form </p>
-{{ tourist_form.as_p }}
+	{{ student_form.as_p }}
 
-{% elif user.userprofile.user_type == 'student' %}
-<p> displayed form is the student form </p>
+	{% else %}
+	<p>The displayed form is the general form. </p>
 
-{{ student_form.as_p }}
+	{{ base_form.as_p }}
 
-{% else %}
-<p> displayed form is the general form </p>
+	{% endif %}
 
-{{ base_form.as_p }}
+	<!--- the below is a hidden input type, basically invisible to 
+	the user, it holds their user type. this should then be passed 
+	to the form with the submit button. --->
 
-{% endif %}
+	<input type="hidden" name="active_user_type" value= {{user.userprofile.user_type}}>
 
-<!--- the below is a hidden input type, basically invisible to 
-the user, it holds their user type. this should then be passed 
-to the form with the submit button. --->
-
-<input type="hidden" name="active_user_type" value= {{user.userprofile.user_type}}>
-
-<button type ="submit">Submit</button>
-</form>
+	<button class="form_bttn" type ="submit">Submit</button>
+	</form>
 
 
 </div>
 <div class="col-sm-1">
 </div>
->>>>>>> Sprint_2_Backup
 
 <div class="col-sm-5 map">
 	<br><br><br>
