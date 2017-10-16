@@ -1,5 +1,5 @@
 from django.contrib import admin
-from accounts.models import UserProfile, userTypeAccessModel, FeatureLocationModel
+from accounts.models import *
 # Register your models here.
 
 admin.site.register(UserProfile)

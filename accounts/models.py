@@ -26,6 +26,8 @@ class FeatureLocationModel(models.Model):
     def __unicode__(self):
         return self.locationName ## added as placeholder because i dont know what
                                  ## it does
+
+    
 class userTypeAccessModel(models.Model):
     ## This Model will hold all the type of locations
     userType = models.CharField(max_length=10, default='')
