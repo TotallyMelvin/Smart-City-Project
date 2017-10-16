@@ -83,7 +83,9 @@ class MapView(TemplateView): ## the maps page of the website
         base_form = GeneralMapForm()
         tourist_form = TouristMapForm()
         student_form = StudentMapForm()
-        args = {'base_form': base_form, 'tourist_form' : tourist_form, 'student_form': student_form}
+        businessman_form = BusinessmanMapForm()
+        args = {'base_form': base_form, 'tourist_form' : tourist_form, 'student_form': student_form,
+                'businessman_form': businessman_form}
         return render(request, self.template_name, args)
 
     def post(self, request):
@@ -120,6 +122,23 @@ class MapView(TemplateView): ## the maps page of the website
             ## return to the UI
             args = {'student_form': student_form, 'map_link': self.map_au_link}
             return render(request, self.template_name, args)
+
+        elif user_type == 'businessman':
+            print('is businessman')
+            businessman_form = BusinessmanMapForm(request.POST)
+            if businessman_form.is_valid():
+                search_location = businessman_form.cleaned_data['location']
+                search_data = businessman_form.cleaned_data['selected_options']
+
+            ## update the google link
+            search_link_string = get_google_url(search_location, search_data)
+
+            self.map_au_link = search_link_string
+
+            ## return to the UI
+            args = {'businessman_form': businessman_form, 'map_link': self.map_au_link}
+            return render(request, self.template_name, args)
+
 
         else:
             base_form = GeneralMapForm(request.POST)

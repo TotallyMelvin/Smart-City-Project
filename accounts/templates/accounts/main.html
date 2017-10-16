@@ -29,6 +29,11 @@
 	<p> The displayed form is the student form. </p>
 
 	{{ student_form.as_p }}
+	
+	{% elif user.userprofile.user_type == 'businessman' %}
+	<p> The displayed form is the businessman form. </p>
+
+	{{ businessman_form.as_p }}
 
 	{% else %}
 	<p>The displayed form is the general form. </p>

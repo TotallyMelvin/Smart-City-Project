@@ -179,7 +179,27 @@ class TouristMapForm(forms.Form): ## Jamie
                                                  forms.CheckboxSelectMultiple,
                                                  choices = all_features)
 
+class BusinessmanMapForm(forms.Form): ## Jamie
 
+    locations = return_locations()
+    print(locations)
+    
+    general_features = get_user_type_features('cityInfo')
+    user_specific_features = get_user_type_features('businessman')
+
+    all_features = general_features + user_specific_features
+    print(all_features)
+    
+    ## GENERAL CITY INFORMATION USER STORY
+    location = forms.ChoiceField(label = "Choose location",
+                                 initial = 'Choose location',
+                                 choices = locations,
+                                 required = True)
+    
+    selected_options = forms.MultipleChoiceField(widget=
+                                                 forms.CheckboxSelectMultiple,
+                                                 choices = all_features)
+    
 class StudentMapForm(forms.Form): ## Jamie
 
     locations = return_locations()

@@ -30,7 +30,7 @@ class FeatureLocationModel(models.Model):
     
 class userTypeAccessModel(models.Model):
     ## This Model will hold all the type of locations
-    userType = models.CharField(max_length=10, default='')
+    userType = models.CharField(max_length=15, default='')
     accessableFeatures = models.CharField(max_length=100000, default='') ## a list
     ## with all the type of locations that the user can access
     def __unicode__(self):
