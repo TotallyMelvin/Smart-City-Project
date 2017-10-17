@@ -50,6 +50,16 @@
 
 	<button class="form_bttn" type ="submit">Submit</button>
 	</form>
+	
+	<!--- ADD IN THE BUSINESSMAN LINK TO THER ORGANISATION PAGE --->
+	{% if user.userprofile.user_type == 'businessman' %}
+	
+	<h3> Go to organisational information page: </h3>
+	<a href="http://127.0.0.1:8000/home/business_feature/" class="form_bttn">Go to business_feature</a>
+	
+	{% endif %}
+	
+	
 
 
 </div>
