@@ -19,6 +19,12 @@
         <li>
           <a href="/home/map">Map</a>
         </li>
+		{% if user.userprofile.user_type == 'businessman' %}
+			<li>
+				<a href="/home/business_feature">Org.Data</a>
+			</li>
+				
+			{% endif %}
           {% endif %}
       </ul>
 
