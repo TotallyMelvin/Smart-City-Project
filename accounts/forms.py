@@ -240,7 +240,32 @@ class LocationSelectForm(forms.Form): ## Jamie
                                  required = True)
 
 
+def get_editable_features():
+    ## this will return all of the admin features that admins should need to edit to keep the website
+    ## up to date
+    all_editable_features = [[]]
+    all_editable_features_data = AdminEditableFeatures.objects.all().values()
+    for editable_feature in all_editable_features_data:
+        ## get data to pass to the drop down 
+        pass_list = [[editable_feature.get('featureModelName'), editable_feature.get('featureDisplayName')]]
+        all_editable_features = all_editable_features + pass_list ## add to the list
+    return all_editable_features
 
+
+
+
+class AdminCreateBusinessDataEditForm(forms.Form):
+    ## GET the business data model infomration so it is editable
+    business_model_data = BusinessFeatureModel.objects.all().values()
+    
+    
+
+      
+
+            
+    
+    
+    
 class AdminCreationForm(forms.ModelForm): ## Jamie  ## draft form for the add admin page
 
     class Meta:

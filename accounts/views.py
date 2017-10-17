@@ -11,6 +11,7 @@ from django.core.mail import EmailMessage
 from django.shortcuts import redirect
 from django.template import Context
 from django.template.loader import get_template
+\
 def home(request):
     form = UserLoginForm(request.POST)
     args = {'form': form}
@@ -178,8 +179,30 @@ class BusinessView(TemplateView):## Jamie
         return render(request, self.main_template, {'location_form': location_form, 'all_entries': all_entries})
 
     
+class BusinessDataAdminView(TemplateView): ##jamie
+    main_template = "accounts/admincreatedataselect.html"
+    ## get model data
+    business_model_data = BusinessFeatureModel.objects.all().values()
+    print(business_model_data)
+    
+    def get(self, request):
+        args = {'business_data': self.business_model_data}
 
+        return render(request, self.main_template, args)
 
+    def post(self, request):
+        view_request = request.POST.get('selected_option')
+        selected_entry = BusinessFeatureModel.objects.get(id=view_request).values()
+        
+        args = {'business_data': self.business_model_data, 'selected_entry': selected_entry}
+        return render(request, self.main_template, args)
+        
+        
+        
+        
+        
+        
+        
 def help(request):
     return render(request, 'accounts/help.html')
 

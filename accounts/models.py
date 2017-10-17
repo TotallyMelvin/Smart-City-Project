@@ -51,3 +51,12 @@ class BusinessFeatureModel(models.Model):
     def __unicode__(self):
         return self.businessType ## added as placeholder because i dont know what
                                  ## it does
+
+class AdminEditableFeatures(models.Model):
+
+    featureModelName = models.CharField(max_length=100, default='')
+    featureDisplayName = models.CharField(max_length=100, default='')
+    
+    def __unicode__(self):
+        return self.businessType ## added as placeholder because i dont know what
+                                 ## it does

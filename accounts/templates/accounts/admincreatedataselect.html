@@ -1,0 +1,65 @@
+{% extends "accounts/base.html" %}
+
+
+
+<!---
+	{% for post in object_list %}
+		<h5>{{ post.date|date:"Y-m-d" }}<a href=
+		"/businessman/{{post.id}}">{{post.title}}</a></h5>
+	{% endfor %}
+--->
+
+{% block content %}
+
+<div class = 'info container-fluid'>
+  <br>
+  <br>
+  <br>
+<div class="container">
+    <div class="row">
+    	<div class="col-sm-6 map_options">
+  <h2>Smart City Admin Data</h2>
+
+
+<h3>this is the Admin Data Creation Section:</h3>
+<p>From the menu below, select the type of data 
+that you want to edit!</p>
+
+<br>
+
+
+
+ 
+<!--- keep the csrf token security above all form options --->
+
+
+{% for entry in  business_data %}
+	<form method = "post">
+		{% csrf_token %}
+		<div style="border-bottom:1px solid #000;"> 
+		<div align="left"><h4> {{ entry.businessType }} in {{ entry.associatedCity }} </h4></div>
+		<input type="hidden" name="selected_option" value= {{ entry.id }}>
+		<div align="right"><button class="form_bttn" type ="submit">View Data</button></div>
+		</div>
+	</form>
+	{% endfor %}
+
+
+
+
+</div>
+<div class="col-sm-1">
+</div>
+
+<div class="col-sm-5 map">
+	<br><br><br>
+{% include "accounts/admincreatedataspecific.html" %}
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}
