@@ -276,6 +276,7 @@ class BusinessDataCreationForm(forms.Form):
         initial=False
      )
 
+
     ## should be a character input for the user, which is
     ## then combined with the selected location to create the embed link, which can
     ## be saved directly into the database

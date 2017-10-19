@@ -178,16 +178,45 @@ class BusinessView(TemplateView):## Jamie
         args = {'location_form': location_form, 'all_entries': all_entries}
         return render(request, self.main_template, args)
 
+
+
 class AddBusinessDataView(TemplateView):
     main_template = "accounts/businessmandatacreation.html"
+
+    def create_google_url_link():
+        return
+        
     
+        
     def get(self, request):
         business_data_creation_form = BusinessDataCreationForm()
         args = {'business_data_creation_form': business_data_creation_form}
         return render(request, self.main_template, args)
-    
+
+
+    def post(self, request):
+        business_data_creation_form = BusinessDataCreationForm(request.POST)
+        if business_data_creation_form.is_valid():
+            new_data = BusinessFeatureModel()
+
+            new_data.businessType = business_data_creation_form.cleaned_data['businessType']
+            new_data.associatedCity = business_data_creation_form.cleaned_data['associatedCity']
+            new_data.cityOrganisationalData = business_data_creation_form.cleaned_data['cityOrganisationalData']
+            new_data.stateAnalysis = business_data_creation_form.cleaned_data['stateAnalysis']
+            new_data.furtherReadings = business_data_creation_form.cleaned_data['furtherReadings']
+            new_data.useMap = business_data_creation_form.cleaned_data['useMap']
+            new_data.optionalMapSearchInput = business_data_creation_form.cleaned_data['optionalMapSearchInput']
+            
+            new_data.save()
+        business_data_creation_form = BusinessDataCreationForm()
+        args = {'business_data_creation_form': business_data_creation_form}
+        return render(request, self.main_template, args)
+
         
-    
+
+
+
+
 def help(request):
     return render(request, 'accounts/help.html')
 
