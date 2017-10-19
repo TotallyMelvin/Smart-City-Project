@@ -9,15 +9,9 @@
 	<h3>Current State:</h3>
 	<p>{{object.stateAnalysis}}</p>
 	<h3>Read More (References):</h3>
-	<p>{{object.furtherReadings}}</p>	
+	<p>{{object.furtherReadings}}</p>
 	
-	{% if object.useMap %}
 	
-		<h3> Map: </h3>
-			<iframe width="600" height="450" frameborder="0"
-		src={{ object.optionalMapSearchInput }}
-		allowfullscreen></iframe>
-	{% endif %}
-
+	{{entry.stateAnalysis|safe|linebreaks}}
 
 {% endblock %}

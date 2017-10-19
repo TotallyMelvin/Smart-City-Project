@@ -156,6 +156,7 @@ class MapView(TemplateView): ## the maps page of the website
             return render(request, self.template_name, args)
 
 class BusinessView(TemplateView):## Jamie 
+
     main_template = "accounts/businessman.html"
     def get(self, request):
         location_form = LocationSelectForm()
@@ -169,25 +170,16 @@ class BusinessView(TemplateView):## Jamie
         if location_form.is_valid(): 
             search_location = location_form.cleaned_data['location']
         print(search_location)
-        
         ## get the entries that relate to the city 
         all_entries = BusinessFeatureModel.objects.filter(associatedCity=search_location)
         print(all_entries)
-            
+       
         
-        args = {'location_form': location_form, 'all_entries': all_entries}
-        return render(request, self.main_template, args)
+        return render(request, self.main_template, {'location_form': location_form, 'all_entries': all_entries})
 
-class AddBusinessDataView(TemplateView):
-    main_template = "accounts/businessmandatacreation.html"
     
-    def get(self, request):
-        business_data_creation_form = BusinessDataCreationForm()
-        args = {'business_data_creation_form': business_data_creation_form}
-        return render(request, self.main_template, args)
-    
-        
-    
+
+
 def help(request):
     return render(request, 'accounts/help.html')
 
@@ -242,6 +234,4 @@ def add_admin(request):
     form = AdminCreationForm(request.POST)
     args = {'form': form}
     return render(request, 'accounts/add_admin.html', args)
-
-
 
