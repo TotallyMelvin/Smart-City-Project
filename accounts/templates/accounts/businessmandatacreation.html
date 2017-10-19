@@ -1,0 +1,10 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+	<form method = "post">
+		{% csrf_token %}
+		<p></p><br><br><br><br> 
+		{{ business_data_creation_form.as_p }}
+		<button class="form_bttn" type ="submit">Submit</button>
+	</form>
+{% endblock %}

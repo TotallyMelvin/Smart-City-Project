@@ -178,9 +178,16 @@ class BusinessView(TemplateView):## Jamie
         args = {'location_form': location_form, 'all_entries': all_entries}
         return render(request, self.main_template, args)
 
+class AddBusinessDataView(TemplateView):
+    main_template = "accounts/businessmandatacreation.html"
     
-
-
+    def get(self, request):
+        business_data_creation_form = BusinessDataCreationForm()
+        args = {'business_data_creation_form': business_data_creation_form}
+        return render(request, self.main_template, args)
+    
+        
+    
 def help(request):
     return render(request, 'accounts/help.html')
 
@@ -235,4 +242,6 @@ def add_admin(request):
     form = AdminCreationForm(request.POST)
     args = {'form': form}
     return render(request, 'accounts/add_admin.html', args)
+
+
 

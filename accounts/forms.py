@@ -93,7 +93,7 @@ class ContactForm(forms.Form):
 
 
 def return_locations():
-    all_loc_list = [['', 'Select City']] ##base items for the UI
+    all_loc_list = [['', 'Select Location']] 
     all_loc_data = FeatureLocationModel.objects.all().values() ## get
     ## data from the models
     for loc_entry in all_loc_data: ## for all the different locations
@@ -239,7 +239,48 @@ class LocationSelectForm(forms.Form): ## Jamie
                                  choices = locations,
                                  required = True)
 
+class BusinessDataCreationForm(forms.Form):
+    ## This will be a form that is used by admins to add data to the
+    ## model "BusinessFeatureModel". Ideally, these form inputs should be generated
+    ## based on the model's fields. but for now will be created using form aspects.
+    ## if time permits, this should be updated.
 
+    ## get the locations
+    possible_locations = return_locations()
+    
+    ##----  entries ---- ## # every option should be required besides the map
+    ## businessType: character entry, should hopfully be one word describing the org
+    businessType = forms.CharField(required=True)
+
+    ## associatedCity: Cities that can be related, should be taken from the "feature
+    ## Location Model" for consistancy standards 
+    associatedCity = forms.ChoiceField(label = "Choose location",
+                                 initial = 'Choose location',
+                                 choices = possible_locations,
+                                 required = True)
+
+     ## cityOrganisationalData: text input for the data
+    cityOrganisationalData = forms.CharField(required=True, widget=forms.Textarea)
+
+    ##stateAnalysis: professional analysis 
+    stateAnalysis = forms.CharField(required=True, widget=forms.Textarea)
+
+    ## further references
+    furtherReadings = forms.CharField(required=True, widget=forms.Textarea)
+
+    ## boolian checkbox
+    
+    useMap = forms.BooleanField(
+        label='myLabel', 
+        required=False,
+        initial=False
+     )
+
+    ## should be a character input for the user, which is
+    ## then combined with the selected location to create the embed link, which can
+    ## be saved directly into the database
+    optionalMapSearchInput = forms.CharField(required=False, widget=forms.Textarea)
+    
 
 class AdminCreationForm(forms.ModelForm): ## Jamie  ## draft form for the add admin page
 

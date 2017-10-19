@@ -3,7 +3,7 @@ from . import views
 from django.views.generic import ListView, DetailView 
 from django.contrib.auth.views import login, logout
 from accounts.models import BusinessFeatureModel
-from accounts.views import MapView, BusinessView
+from accounts.views import MapView, BusinessView, AddBusinessDataView
 
 urlpatterns = [
     url(r'^$', views.home),
@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^business_feature/$', BusinessView.as_view(), name='business'),
     url(r'^business_feature/(?P<pk>\d+)$', DetailView.as_view(model = BusinessFeatureModel,
                                                      template_name ='accounts/businessmanentry.html')),
+    url(r'^admin/create_business_data/$', AddBusinessDataView.as_view(), name='adminCreateData'),
 ]
