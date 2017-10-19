@@ -87,6 +87,9 @@ class ContactForm(forms.Form):
         widget=forms.Textarea
     )
 
+##Password Reset
+class getPasswordReset(forms.Form):
+    Email = forms.EmailField(required = True)
 
 ## Jamie
 
@@ -241,11 +244,11 @@ class LocationSelectForm(forms.Form): ## Jamie
 
 
 
-class AdminCreationForm(forms.ModelForm): ## Jamie  ## draft form for the add admin page
-
-    class Meta:
-        model = User
-		fields = ('username','first_name','last_name', 'email', 'password')
+##class AdminCreationForm(forms.ModelForm): ## Jamie  ## draft form for the add admin page
+##
+##    class Meta:
+##        model = User
+##	fields = ('username','first_name','last_name', 'email', 'password')
 		
 
 

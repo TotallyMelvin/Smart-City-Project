@@ -225,9 +225,10 @@ def contact(request):
     })
 
 
-
-def password_recovery(request):
-    return render(request, 'accounts/password_recovery.html')
+#Password Reset Stuff
+def password_reset(request):
+    form = getPasswordReset(request.POST)
+    return render(request, 'accounts/password_reset_form.html', {'form':form})
 
 ## Jamie - add admin
 def add_admin(request):
