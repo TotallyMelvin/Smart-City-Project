@@ -251,8 +251,7 @@ class AdminCreationForm(forms.ModelForm): ## Jamie  ## draft form for the add ad
         'last_name',
         'email',
         'password1',
-        'password2'
-        )
+        'password2')
 
 
 
