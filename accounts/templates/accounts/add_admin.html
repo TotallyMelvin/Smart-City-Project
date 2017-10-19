@@ -9,7 +9,6 @@
   <br>
   <div class="container">
   <br>
-  <br>
     <div class="row">
 
    <div class="col-sm-6 login">
@@ -17,10 +16,12 @@
     
   <form method="post">
 	<p>Below you can add an Admin...</p>
+	<br>
       {% csrf_token %}
+	  <br>
       {{ form.as_p }}
       <br>
-      <button type="submit">add</button>
+      <button type="submit">Add Admin</button>
   </form>
 </div>
 </div>
