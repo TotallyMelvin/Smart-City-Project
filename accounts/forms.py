@@ -245,7 +245,13 @@ class AdminCreationForm(forms.ModelForm): ## Jamie  ## draft form for the add ad
 
     class Meta:
         model = User
-		
+        fields = (
+        'username',
+        'first_name',
+        'last_name',
+        'email',
+        'password1',
+        )
 
 
 
