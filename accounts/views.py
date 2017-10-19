@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from accounts.codesnippets import get_google_url
 #contact
 from accounts.forms import ContactForm
+from accounts.forms import getPasswordReset
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect
 from django.template import Context
@@ -227,6 +228,21 @@ def contact(request):
 
 #Password Reset Stuff
 def password_reset(request):
+    ##Does not work
+##    if request.method == 'GET':
+##        form = getPasswordReset(request.POST)
+##    else:
+##        form = getPasswordReset(request.POST)
+##        if form.is_valid():
+##            subject = 'Password Reset'
+##            from_email = 'noreply.ifb299g16@gmail.com'
+##            to_email = 'jasontam2233@gmail.com'
+##            html_content = render_to_string('password_reset_email.html', {'varname':'value'})
+##            text_content = strip_tags(html_content)
+##            msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+##            msg.attach_alternative(html_content, "text/html")
+##            msg.send()
+##            return redirect('home')
     form = getPasswordReset(request.POST)
     return render(request, 'accounts/password_reset_form.html', {'form':form})
 

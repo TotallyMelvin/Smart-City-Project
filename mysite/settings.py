@@ -123,10 +123,11 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/home'
 
 #Email
-##EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend' 
-##DEFAULT_FROM_EMAIL = 'BinChicken Texsperts Support Team <noreply.ifb299g16@gmail.com>'
-##EMAIL_HOST_USER = 'noreply.ifb299g16@gmail.com'
-##EMAIL_HOST_PASSWORD = 'ifb299bct'
-##EMAIL_USE_TLS = True
-##EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
+##EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend' 
+DEFAULT_FROM_EMAIL = 'BinChicken Texsperts Support Team <noreply.ifb299g16@gmail.com>'
+EMAIL_HOST_USER = 'noreply.ifb299g16@gmail.com'
+EMAIL_HOST_PASSWORD = 'ifb299bct'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
+EMAIL_PORT = 587
