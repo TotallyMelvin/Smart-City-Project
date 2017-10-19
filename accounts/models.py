@@ -45,7 +45,7 @@ class BusinessFeatureModel(models.Model):
     stateAnalysis = models.TextField()
     furtherReadings = models.TextField()
     useMap = models.BooleanField()
-    optionalMapSearchInput = models.CharField(max_length=100, default='---')
+    optionalMapSearchInput = models.CharField(max_length=1000, default='---')
     
     ## with all the type of locations that the user can access
     def __unicode__(self):

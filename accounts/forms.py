@@ -280,7 +280,7 @@ class BusinessDataCreationForm(forms.Form):
     ## should be a character input for the user, which is
     ## then combined with the selected location to create the embed link, which can
     ## be saved directly into the database
-    optionalMapSearchInput = forms.CharField(required=False, widget=forms.Textarea)
+    optionalMapSearchInput = forms.CharField(required=False)
     
 
 class AdminCreationForm(forms.ModelForm): ## Jamie  ## draft form for the add admin page

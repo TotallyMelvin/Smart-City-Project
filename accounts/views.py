@@ -99,7 +99,7 @@ class MapView(TemplateView): ## the maps page of the website
                 search_data = tourist_form.cleaned_data['selected_options']
 
             ## update the google link
-            search_link_string = get_google_url(search_location, search_data)
+            search_link_string = get_google_url(search_location, search_data, 0)
 
             self.map_au_link = search_link_string
 
@@ -147,7 +147,7 @@ class MapView(TemplateView): ## the maps page of the website
                 search_data = base_form.cleaned_data['selected_options']
 
             ## update the google link
-            search_link_string = get_google_url(search_location, search_data)
+            search_link_string = get_google_url(search_location, search_data, 0)
 
             self.map_au_link = search_link_string
 
@@ -182,10 +182,7 @@ class BusinessView(TemplateView):## Jamie
 
 class AddBusinessDataView(TemplateView):
     main_template = "accounts/businessmandatacreation.html"
-
-    def create_google_url_link():
-        return
-        
+    
     
         
     def get(self, request):
@@ -197,6 +194,11 @@ class AddBusinessDataView(TemplateView):
     def post(self, request):
         business_data_creation_form = BusinessDataCreationForm(request.POST)
         if business_data_creation_form.is_valid():
+
+            ## Create Map link
+            search_link_string = get_google_url(business_data_creation_form.cleaned_data['associatedCity'],
+                                                business_data_creation_form.cleaned_data['optionalMapSearchInput'], 1)
+            
             new_data = BusinessFeatureModel()
 
             new_data.businessType = business_data_creation_form.cleaned_data['businessType']
@@ -205,7 +207,7 @@ class AddBusinessDataView(TemplateView):
             new_data.stateAnalysis = business_data_creation_form.cleaned_data['stateAnalysis']
             new_data.furtherReadings = business_data_creation_form.cleaned_data['furtherReadings']
             new_data.useMap = business_data_creation_form.cleaned_data['useMap']
-            new_data.optionalMapSearchInput = business_data_creation_form.cleaned_data['optionalMapSearchInput']
+            new_data.optionalMapSearchInput = search_link_string
             
             new_data.save()
         business_data_creation_form = BusinessDataCreationForm()
