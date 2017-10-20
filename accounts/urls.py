@@ -3,7 +3,7 @@ from . import views
 from django.views.generic import ListView, DetailView 
 from django.contrib.auth.views import login, logout
 from accounts.models import BusinessFeatureModel
-from accounts.views import MapView, BusinessView
+from accounts.views import MapView, BusinessView, AddBusinessDataView
 #Import views as auth_views
 from django.contrib.auth import views as auth_views
 
@@ -20,9 +20,10 @@ urlpatterns = [
     url(r'^help/contact/$', views.contact, name='contact'),
     url(r'^help/password_recovery/$', views.password_recovery, name='password_recovery'),
     url(r'^addadmin/$', views.add_admin, name='add_admin'),
-    url(r'^business_feature/$', BusinessView.as_view(), name='business'),
+    url(r'^business_feature/$', BusinessView.as_view(), name='business'),## Jamie --
     url(r'^business_feature/(?P<pk>\d+)$', DetailView.as_view(model = BusinessFeatureModel,
-                                                     template_name ='accounts/businessmanentry.html')),
+                                                     template_name ='accounts/businessmanentry.html')), ## Jamie --
+    url(r'^admin/create_business_data/$', AddBusinessDataView.as_view(), name='adminCreateData'), ## Jamie --
     #Email Views
     url(r'^password_reset/$', auth_views.password_reset, name = 'password_reset'),
     url(r'^password_reset/done/$', auth_views.password_reset_done, name = 'password_reset_done'),
