@@ -129,5 +129,4 @@ DEFAULT_FROM_EMAIL = 'BinChicken Texsperts Support Team <noreply.ifb299g16@gmail
 EMAIL_HOST_USER = 'noreply.ifb299g16@gmail.com'
 EMAIL_HOST_PASSWORD = 'ifb299bct'
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = True
 EMAIL_PORT = 587
