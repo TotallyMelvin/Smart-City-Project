@@ -75,6 +75,8 @@ def register(request):
         'accounts/register.html',
         {'user_form': user_form, 'profile_form': profile_form, 'registered':registered})
 
+
+## Jamie --
 class MapView(TemplateView): ## the maps page of the website
 
     map_au_link = "https://www.google.com/maps/embed/v1/search?q=australia&key=AIzaSyCo8hPtObahI8239nap_CvlDo0mUTkqx6Q"
@@ -100,7 +102,7 @@ class MapView(TemplateView): ## the maps page of the website
                 search_data = tourist_form.cleaned_data['selected_options']
 
             ## update the google link
-            search_link_string = get_google_url(search_location, search_data)
+            search_link_string = get_google_url(search_location, search_data, 0)
 
             self.map_au_link = search_link_string
 
@@ -148,7 +150,7 @@ class MapView(TemplateView): ## the maps page of the website
                 search_data = base_form.cleaned_data['selected_options']
 
             ## update the google link
-            search_link_string = get_google_url(search_location, search_data)
+            search_link_string = get_google_url(search_location, search_data, 0)
 
             self.map_au_link = search_link_string
 
@@ -157,7 +159,6 @@ class MapView(TemplateView): ## the maps page of the website
             return render(request, self.template_name, args)
 
 class BusinessView(TemplateView):## Jamie 
-
     main_template = "accounts/businessman.html"
     def get(self, request):
         location_form = LocationSelectForm()
@@ -171,14 +172,52 @@ class BusinessView(TemplateView):## Jamie
         if location_form.is_valid(): 
             search_location = location_form.cleaned_data['location']
         print(search_location)
+        
         ## get the entries that relate to the city 
         all_entries = BusinessFeatureModel.objects.filter(associatedCity=search_location)
         print(all_entries)
-       
+            
         
-        return render(request, self.main_template, {'location_form': location_form, 'all_entries': all_entries})
+        args = {'location_form': location_form, 'all_entries': all_entries}
+        return render(request, self.main_template, args)
 
+
+## Jamie --
+class AddBusinessDataView(TemplateView):
+    main_template = "accounts/businessmandatacreation.html"
     
+    
+        
+    def get(self, request):
+        business_data_creation_form = BusinessDataCreationForm()
+        args = {'business_data_creation_form': business_data_creation_form}
+        return render(request, self.main_template, args)
+
+
+    def post(self, request):
+        business_data_creation_form = BusinessDataCreationForm(request.POST)
+        if business_data_creation_form.is_valid():
+
+            ## Create Map link
+            search_link_string = get_google_url(business_data_creation_form.cleaned_data['associatedCity'],
+                                                business_data_creation_form.cleaned_data['optionalMapSearchInput'], 1)
+            
+            new_data = BusinessFeatureModel()
+
+            new_data.businessType = business_data_creation_form.cleaned_data['businessType']
+            new_data.associatedCity = business_data_creation_form.cleaned_data['associatedCity']
+            new_data.cityOrganisationalData = business_data_creation_form.cleaned_data['cityOrganisationalData']
+            new_data.stateAnalysis = business_data_creation_form.cleaned_data['stateAnalysis']
+            new_data.furtherReadings = business_data_creation_form.cleaned_data['furtherReadings']
+            new_data.useMap = business_data_creation_form.cleaned_data['useMap']
+            new_data.optionalMapSearchInput = search_link_string
+            
+            new_data.save()
+        business_data_creation_form = BusinessDataCreationForm()
+        args = {'business_data_creation_form': business_data_creation_form}
+        return render(request, self.main_template, args)
+
+ ## Jamie --       
 
 
 def help(request):

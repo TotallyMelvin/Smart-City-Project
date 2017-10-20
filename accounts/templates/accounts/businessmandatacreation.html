@@ -3,7 +3,10 @@
 {% block content %}
 	<form method = "post">
 		{% csrf_token %}
-		<p></p><br><br><br><br> 
+		<br><br><br><br> 
+		<p> For the Google Map search input, please ensure that it does not include the location,
+		and is simple, and all different information is separated by ','. for example: "MacDonalds, Burger King".</p>
+		
 		{{ business_data_creation_form.as_p }}
 		<button class="form_bttn" type ="submit">Submit</button>
 	</form>
