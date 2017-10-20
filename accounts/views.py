@@ -225,27 +225,6 @@ def contact(request):
         'form': form_class,
     })
 
-
-#Password Reset Stuff
-def password_reset(request):
-    ##Does not work
-##    if request.method == 'GET':
-##        form = getPasswordReset(request.POST)
-##    else:
-##        form = getPasswordReset(request.POST)
-##        if form.is_valid():
-##            subject = 'Password Reset'
-##            from_email = 'noreply.ifb299g16@gmail.com'
-##            to_email = 'jasontam2233@gmail.com'
-##            html_content = render_to_string('password_reset_email.html', {'varname':'value'})
-##            text_content = strip_tags(html_content)
-##            msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
-##            msg.attach_alternative(html_content, "text/html")
-##            msg.send()
-##            return redirect('home')
-    form = getPasswordReset(request.POST)
-    return render(request, 'accounts/password_reset_form.html', {'form':form})
-
 ## Jamie - add admin
 def add_admin(request):
     form = AdminCreationForm(request.POST)
