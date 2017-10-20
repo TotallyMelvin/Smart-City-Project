@@ -8,7 +8,7 @@
 <div class="container-fluid profile">
 <div class="row">
 	<div class="col-sm-1"></div>
-	<div class="col-sm-6 border">
+	<div class="col-sm-5 border">
   <h2>Manage Your Profile</h2>
   <p>Feel free to update your details below</p>
   <a href="/home/profile/edit_profile">Click to update your details</a>
@@ -26,6 +26,9 @@
 
 </form>
 </div>
+<div class="col-sm-1"></div>
+	{% load static %}
+	<div class="col-sm-5 login_image"><img src="{% static "css/Images/placeholder.jpg" %}" alt="Placeholder"></div>
 </div>
 </div>
 {% endblock %}

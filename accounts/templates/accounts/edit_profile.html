@@ -8,7 +8,7 @@
 <div class = 'container-fluid edit_profile'>
 <div class="row">
 	<div class="col-sm-1"></div>
-	<div class="col-sm-6 border">
+	<div class="col-sm-5 border">
   <h2>Manage Your Profile</h2>
 <form method="post">
 	{% csrf_token %}
@@ -19,6 +19,9 @@
 	<button class="form_bttn" type="submit">Submit</button>
 </form>
 </div>
+	<div class="col-sm-1"></div>
+	{% load static %}
+	<div class="col-sm-5 login_image"><img src="{% static "css/Images/placeholder.jpg" %}" alt="Placeholder"></div>
 </div>
 </div>
 {% endblock %}

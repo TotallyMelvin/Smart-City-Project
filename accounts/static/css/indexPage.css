@@ -385,7 +385,8 @@ ul.errorlist {
 	margin-left: 15px;
 }
 
-.helptext {
+.edit_profile .helptext {
 	font-size: 12px;
 	margin-left: 15px;
+	margin-right: 15px;
 }
