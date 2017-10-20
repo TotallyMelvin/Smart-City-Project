@@ -225,6 +225,12 @@ def contact(request):
         'form': form_class,
     })
 
+#Password Recovery Views
+def password_reset(request):
+    form = getPasswordReset(request.POST)
+    return render(request, 'accounts/password_reset_form.html')
+
+
 ## Jamie - add admin
 def add_admin(request):
     form = AdminCreationForm(request.POST)
