@@ -1,14 +1,16 @@
-{% extends "accounts/base.html" %}
+<!--- 
+Creator: Jamie Kostaschuk
 
+Description:  this is the businessman specific data feature.
 
+It is designed in several parts.
+	Firstly, the form gathers the location that the user wants
+	to find data in. and teh 'businessman results' page displays the
+	data related to that location
 
-<!---
-	{% for post in object_list %}
-		<h5>{{ post.date|date:"Y-m-d" }}<a href=
-		"/businessman/{{post.id}}">{{post.title}}</a></h5>
-	{% endfor %}
 --->
 
+{% extends "accounts/base.html" %}
 {% block content %}
 
 <div class = 'info container-fluid'>
@@ -18,7 +20,7 @@
 <div class="container">
     <div class="row">
     	<div class="col-sm-6 map_options">
-  <h2>Smart City Maps</h2>
+  <h2>Business Data</h2>
 
 <form method = "post">
 <p>this is the businessman feature
@@ -31,7 +33,6 @@
 <p> displayed form below is the location form</p>
 {{ location_form.as_p }}
 
-
 <button type ="submit" class="form_bttn">Submit</button>
 </form>
 
@@ -41,6 +42,7 @@
 
 <div class="col-sm-5 map">
 	<br><br><br>
+	
 {% include "accounts/businessmanresults.html" %}
 </div>
 </div>

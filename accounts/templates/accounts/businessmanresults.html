@@ -1,3 +1,13 @@
+<!--- 
+Creator: Jamie Kostaschuk
+
+Description:  this is the businessman specific data feature.
+
+Displays the different data that is stored to the user. with a link to view more
+details about that data, which opens a new window with the details 
+
+--->
+
 {% block content %}
 <p> this is proof that the results can load
 
@@ -9,6 +19,7 @@ about each </p>
 <!--- go through all of the entries and
 
 print the relavent areas  --->
+
 
 {% for entry in all_entries %}
 	<h5> {{ entry.businessType }}: <a href=
