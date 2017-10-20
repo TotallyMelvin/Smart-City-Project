@@ -75,27 +75,40 @@ def register(request):
         'accounts/register.html',
         {'user_form': user_form, 'profile_form': profile_form, 'registered':registered})
 
+###############################
+## Jamie Section Start
+###############################
 
-## Jamie --
-class MapView(TemplateView): ## the maps page of the website
-
+class MapView(TemplateView):
+    ## Creator: Jamie Kostaschuk
+    ## Description: This is the 'map' view for the webpage. it links to the different map forms fro mthe forms.py file,
+    ## and depending on the user type of the active user, displays the accociated form for them
+    
+    ## the base map link that can be used. It will just display australia on the map. will be overwritten to show more
+    #3 specifics based on the forms and user
     map_au_link = "https://www.google.com/maps/embed/v1/search?q=australia&key=AIzaSyCo8hPtObahI8239nap_CvlDo0mUTkqx6Q"
-    template_name = 'accounts/main.html'
+    
+    template_name = 'accounts/main.html' ## linked template that is used. 
 
     def get(self, request):
+        ## create all of the possible map input forms to pass to the template - which can them decide their user type
+        ## and display the correct form to the user
+        
         base_form = GeneralMapForm()
         tourist_form = TouristMapForm()
         student_form = StudentMapForm()
         businessman_form = BusinessmanMapForm()
         args = {'base_form': base_form, 'tourist_form' : tourist_form, 'student_form': student_form,
                 'businessman_form': businessman_form}
+        
         return render(request, self.template_name, args)
 
     def post(self, request):
-        user_type = request.POST.get('active_user_type')
+        user_type = request.POST.get('active_user_type') ## this is a hidden field in the template that can retrieved
+        ## when the user sends a POST request, now the python file can use their user type to display different
+        ## information, pick which form to use, etc.
         
         if user_type == 'tourist':
-            print('is tourist')
             tourist_form = TouristMapForm(request.POST)
             if tourist_form.is_valid():
                 search_location = tourist_form.cleaned_data['location']
@@ -106,12 +119,11 @@ class MapView(TemplateView): ## the maps page of the website
 
             self.map_au_link = search_link_string
 
-            ## return to the UI
+            ## return to the UI with the map
             args = {'tourist_form': tourist_form, 'map_link': self.map_au_link}
             return render(request, self.template_name, args)
 
         elif user_type == 'student':
-            print('is student')
             student_form = StudentMapForm(request.POST)
             if student_form.is_valid():
                 search_location = student_form.cleaned_data['location']
@@ -122,12 +134,11 @@ class MapView(TemplateView): ## the maps page of the website
 
             self.map_au_link = search_link_string
 
-            ## return to the UI
+            ## return to the UI with the map link
             args = {'student_form': student_form, 'map_link': self.map_au_link}
             return render(request, self.template_name, args)
 
         elif user_type == 'businessman':
-            print('is businessman')
             businessman_form = BusinessmanMapForm(request.POST)
             if businessman_form.is_valid():
                 search_location = businessman_form.cleaned_data['location']
@@ -138,14 +149,13 @@ class MapView(TemplateView): ## the maps page of the website
 
             self.map_au_link = search_link_string
 
-            ## return to the UI
+            ## return to the UI with the map link
             args = {'businessman_form': businessman_form, 'map_link': self.map_au_link}
             return render(request, self.template_name, args)
 
-
-        else:
+        else: # In the case that a admin is viewing the page, or if a error has occured
             base_form = GeneralMapForm(request.POST)
-            if base_form.is_valid():
+            if base_form.is_valid(): ## use the base form 
                 search_location = base_form.cleaned_data['location']
                 search_data = base_form.cleaned_data['selected_options']
 
@@ -158,67 +168,84 @@ class MapView(TemplateView): ## the maps page of the website
             args = {'base_form': base_form, 'map_link': self.map_au_link}
             return render(request, self.template_name, args)
 
-class BusinessView(TemplateView):## Jamie 
-    main_template = "accounts/businessman.html"
+
+class BusinessView(TemplateView):
+    ## Creator: Jamie Kostaschuk
+    ## Description: This is the view that allows users to see the 'organisational data'
+    ## The view makes use of a form which asks for the user to select a location,
+    ## based on that it returns all organisational data entries about that city from
+    ## the model
+    
+    main_template = "accounts/businessman.html" ## the template that will be used
+    
     def get(self, request):
-        location_form = LocationSelectForm()
+        location_form = LocationSelectForm() ## pass the form to be displayed to the user
         return render(request, self.main_template, {'location_form': location_form})
 
     def post(self, request):
-        print(""" ------------------
-                there has been a post request
-                -------------------------""")
-        location_form = LocationSelectForm(request.POST)
+        location_form = LocationSelectForm(request.POST) 
+        
         if location_form.is_valid(): 
-            search_location = location_form.cleaned_data['location']
-        print(search_location)
+            search_location = location_form.cleaned_data['location']  ## get the location that they
+        ## selected
         
         ## get the entries that relate to the city 
         all_entries = BusinessFeatureModel.objects.filter(associatedCity=search_location)
-        print(all_entries)
-            
         
-        args = {'location_form': location_form, 'all_entries': all_entries}
+        args = {'location_form': location_form, 'all_entries': all_entries} ## Pass the
+        ## entries to the tempalte to display to the user
         return render(request, self.main_template, args)
 
 
-## Jamie --
+
 class AddBusinessDataView(TemplateView):
-    main_template = "accounts/businessmandatacreation.html"
+    ## Creator: Jamie Kostaschuk
+    ## Description: This is a view that is designed to allow users (admins) to create data for
+    ## the business organisational data model. This form is designed to allow for the admins
+    ## to add data. however the important reason for this view is to autofill the map
+    ## link field in the model
     
-    
+    main_template = "accounts/businessmandatacreation.html" ## the template that will be used
+
         
     def get(self, request):
-        business_data_creation_form = BusinessDataCreationForm()
+        ## get and display the form
+        business_data_creation_form = BusinessDataCreationForm() 
         args = {'business_data_creation_form': business_data_creation_form}
         return render(request, self.main_template, args)
-
 
     def post(self, request):
         business_data_creation_form = BusinessDataCreationForm(request.POST)
         if business_data_creation_form.is_valid():
 
-            ## Create Map link
+            ## Create Map link based in the city of the data and the map input the user wanted 
             search_link_string = get_google_url(business_data_creation_form.cleaned_data['associatedCity'],
                                                 business_data_creation_form.cleaned_data['optionalMapSearchInput'], 1)
             
+            ## Create the entry in the model
             new_data = BusinessFeatureModel()
 
+            ## fill out the new entry's data fields
             new_data.businessType = business_data_creation_form.cleaned_data['businessType']
             new_data.associatedCity = business_data_creation_form.cleaned_data['associatedCity']
             new_data.cityOrganisationalData = business_data_creation_form.cleaned_data['cityOrganisationalData']
             new_data.stateAnalysis = business_data_creation_form.cleaned_data['stateAnalysis']
             new_data.furtherReadings = business_data_creation_form.cleaned_data['furtherReadings']
             new_data.useMap = business_data_creation_form.cleaned_data['useMap']
-            new_data.optionalMapSearchInput = search_link_string
-            
+            new_data.optionalMapSearchInput = search_link_string ## use the map link that was created not the
+            ## user's input
+
+            ## Save the data in the model
             new_data.save()
+            
+        ## return a empty form to the user so they can add more data in they want
         business_data_creation_form = BusinessDataCreationForm()
         args = {'business_data_creation_form': business_data_creation_form}
         return render(request, self.main_template, args)
 
- ## Jamie --       
-
+###############################
+## Jamie Section End
+###############################
 
 def help(request):
     return render(request, 'accounts/help.html')

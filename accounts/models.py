@@ -17,6 +17,12 @@ class UserProfile(models.Model):
 def __unicode__(self):
         return self.username
 
+
+###############################
+## Jamie Section Start
+###############################
+
+
 class FeatureLocationModel(models.Model):
     ## This Model will hold all the locations that the admin users want the
     ## service to work for, such as 'brisbane', 'melbourne'
@@ -24,8 +30,7 @@ class FeatureLocationModel(models.Model):
     # because it's meant to be a small ID
     locationName = models.CharField(max_length=50, default='') #what will dispaly UI
     def __unicode__(self):
-        return self.locationName ## added as placeholder because i dont know what
-                                 ## it does
+        return self.locationName 
 
     
 class userTypeAccessModel(models.Model):
@@ -34,20 +39,24 @@ class userTypeAccessModel(models.Model):
     accessableFeatures = models.CharField(max_length=100000, default='') ## a list
     ## with all the type of locations that the user can access
     def __unicode__(self):
-        return self.userType ## added as placeholder because i dont know what
-                                 ## it does
+        return self.userType 
 
 class BusinessFeatureModel(models.Model):
-    ## This Model will hold all the type of locations
+    ## This Model will hold the following information as mandatory
     businessType = models.CharField(max_length=100, default='')
     associatedCity = models.CharField(max_length=100, default='')
     cityOrganisationalData = models.TextField()
     stateAnalysis = models.TextField()
     furtherReadings = models.TextField()
+    ## useMap boolean decides whether the map will be displayed to the user
     useMap = models.BooleanField()
+    ## if useMap is true, then the optionalMapSearch will be used to create
+    ## the map link for the user to see
     optionalMapSearchInput = models.CharField(max_length=100, default='---')
-    
-    ## with all the type of locations that the user can access
+
     def __unicode__(self):
-        return self.businessType ## added as placeholder because i dont know what
-                                 ## it does
+        return self.businessType
+    
+###############################
+## Jamie Section End
+###############################
