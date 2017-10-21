@@ -130,7 +130,7 @@ class MapView(TemplateView):
                 search_data = student_form.cleaned_data['selected_options']
 
             ## update the google link
-            search_link_string = get_google_url(search_location, search_data)
+            search_link_string = get_google_url(search_location, search_data, 0)
 
             self.map_au_link = search_link_string
 
@@ -145,7 +145,7 @@ class MapView(TemplateView):
                 search_data = businessman_form.cleaned_data['selected_options']
 
             ## update the google link
-            search_link_string = get_google_url(search_location, search_data)
+            search_link_string = get_google_url(search_location, search_data, 0)
 
             self.map_au_link = search_link_string
 
