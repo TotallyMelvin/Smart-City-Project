@@ -32,5 +32,5 @@ urlpatterns = [
         auth_views.password_reset_confirm, {'template_name': 'accounts/password_reset_confirm.html'}),
     url(r'^reset/done/$', auth_views.password_reset_complete, {'template_name': 'accounts/password_reset_complete.html'}),
     url(r'^', include('django.contrib.auth.urls')), #This adds all other ones that are reliant on others
-
+     
 ]
