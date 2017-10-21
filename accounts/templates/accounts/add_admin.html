@@ -2,7 +2,12 @@
 {% block content %}
 <!-- include the navBar. Change navBar at navBar.html -->
 {% include 'accounts/navBar.html' %}
-<!-- Body -->
+
+
+<!--- restrict access --->
+<!--- check if user is a admin, if admin, give access --->
+
+{% if user.is_superuser %}
 <div class = 'info container-fluid'>
   <br>
   <br>
@@ -27,4 +32,14 @@
 </div>
 </div>
 </div>
+
+{% else %}
+<h1> You Dont have access to this feature <h1>
+
+
+{% endif %}
+
+<!-- Body -->
+
 {% endblock %}
+

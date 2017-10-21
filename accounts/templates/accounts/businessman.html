@@ -27,6 +27,14 @@ It is designed in several parts.
 <br>
 
 </p>
+
+<!--- restrict access --->
+<!--- check if user is a admin, if admin, give access --->
+<!--- check if user is a businessman, if so, give access --->
+
+{% if user.userprofile.user_type == 'businessman' or user.is_superuser %}
+
+
 <!--- keep the csrf token security above all form options --->
 {% csrf_token %}
 
@@ -45,6 +53,14 @@ It is designed in several parts.
 	
 {% include "accounts/businessmanresults.html" %}
 </div>
+
+{% else %}
+<h1> You Dont have access to this feature <h1>
+
+
+{% endif %}
+
+
 </div>
 </div>
 </div>

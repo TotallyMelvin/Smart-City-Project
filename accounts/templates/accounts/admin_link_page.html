@@ -9,6 +9,12 @@ admin-related pages
 {% extends "accounts/base.html" %}
 
 {% block content %}
+
+<!--- restrict access --->
+<!--- check if user is a admin, if admin, give access --->
+
+{% if user.is_superuser %}
+
 	<br>
 	<br>
 	<br>
@@ -16,4 +22,13 @@ admin-related pages
 	<a href="/home/admin/create_business_data" class="form_bttn" >Create Business Data </a>
 	<br>
 	<br>
+
+{% else %}
+
+<h1> You Dont have access to this feature <h1>
+
+
+{% endif %}
+
+
 {% endblock %}

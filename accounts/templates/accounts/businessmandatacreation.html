@@ -7,6 +7,13 @@ Description:  this is the businessman data creation form
 {% extends "accounts/base.html" %}
 
 {% block content %}
+
+
+<!--- restrict access --->
+<!--- check if user is a admin, if admin, give access --->
+
+{% if user.is_superuser %}
+
 	<form method = "post">
 		{% csrf_token %}
 		<br><br><br><br> 
@@ -16,4 +23,15 @@ Description:  this is the businessman data creation form
 		{{ business_data_creation_form.as_p }}
 		<button class="form_bttn" type ="submit">Submit</button>
 	</form>
+
+{% else %}
+  <br>
+  <br>
+  <br>
+<h1> You Dont have access to this feature <h1>
+
+{% endif %}
+
+
 {% endblock %}
+

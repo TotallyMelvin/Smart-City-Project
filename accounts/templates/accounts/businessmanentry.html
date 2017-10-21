@@ -12,6 +12,11 @@ variable is true
 
 {% block content %}
 
+<!--- restrict access --->
+<!--- check if user is a admin, if admin, give access --->
+<!--- check if user is a businessman, if so, give access --->
+
+{% if user.userprofile.user_type == 'businessman' or user.is_superuser %}
 	<h1> {{object.businessType}} </h1>
 	<h2> In City: {{object.associatedCity}} </h2>
 	<h3>Organisations:</h3>
@@ -28,6 +33,14 @@ variable is true
 		src={{ object.optionalMapSearchInput }}
 		allowfullscreen></iframe>
 	{% endif %}
+
+{% else %}
+<h1> You Dont have access to this feature <h1>
+
+
+{% endif %}
+
+
 
 
 {% endblock %}
