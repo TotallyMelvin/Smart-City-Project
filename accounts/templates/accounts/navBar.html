@@ -19,11 +19,16 @@
         <li>
           <a href="/home/map">Map</a>
         </li>
-		{% if user.userprofile.user_type == 'businessman' %}
+		{% if user.userprofile.user_type == 'businessman' %} <!--- Jamie added --->
 			<li>
-				<a href="/home/business_feature">Org.Data</a>
+				<a href="/home/business_feature">Org.Data</a> <!--- Jamie added --->
 			</li>
-				
+			{% endif %}
+			
+		{% if user.is_superuser %} <!--- Jamie added --->
+			<li>
+				<a href="/home/admin/admin_page/">Admin Page </a> <!--- Jamie added --->
+			</li>
 			{% endif %}
           {% endif %}
       </ul>
@@ -51,6 +56,9 @@
             </li>
             <li>
         		    <a href="/home/help">Help</a>
+        	 </li>
+			 <li>
+        		    <p>{{ user }}</p> <!--- Jamie added --->
         	 </li>
           {% endif %}
       </ul>

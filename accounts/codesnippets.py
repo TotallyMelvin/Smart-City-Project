@@ -29,9 +29,6 @@ def get_google_url(search_loc, search_selections, webpage_identifer):
         new_string = search_selections.replace(" " , ",+")
         search_str = ',+'.join([new_string])
         search_input = search_str + '+in+' + search_loc ## combine the data that is being input
-        
-    ## join the apsects in the search_input so they can be added to the link
-        
     
     ## create the link
     searchable_link = search_base[0] + search_input + search_base[1]

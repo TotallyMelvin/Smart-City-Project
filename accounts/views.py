@@ -243,6 +243,14 @@ class AddBusinessDataView(TemplateView):
         args = {'business_data_creation_form': business_data_creation_form}
         return render(request, self.main_template, args)
 
+class AdminPageView(TemplateView):
+    ## Creator: Jamie Kostaschuk
+    ## Description: This is a view that displays the admin page to the user
+    main_template = "accounts/admin_link_page.html" ## the template that will be used
+    def get(self, request):
+        return render(request, self.main_template)
+    
+
 ###############################
 ## Jamie Section End
 ###############################
