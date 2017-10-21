@@ -21,15 +21,20 @@ def get_google_url(search_loc, search_selections, webpage_identifer):
 
     
     if webpage_identifer == 0: ## MapView/page
-        search_input = [search_loc] + search_selections ## combine the data that is being input
+        search_str = ',+'.join(search_selections)
+        search_input = search_str + '+in+' + search_loc ## combine the data that is being input
+        
     elif webpage_identifer == 1: ## AddBusinessDataView
         ## remove whitespace from any user input
-        new_string = search_selections.replace(" " , ",+") 
-        search_input = [search_loc] + [new_string] ## combine the data that is being input
+        new_string = search_selections.replace(" " , ",+")
+        search_str = ',+'.join([new_string])
+        search_input = search_str + '+in+' + search_loc ## combine the data that is being input
+        
     ## join the apsects in the search_input so they can be added to the link
-    search_str = ',+'.join(search_input)
+        
+    
     ## create the link
-    searchable_link = search_base[0] + search_str + search_base[1]
+    searchable_link = search_base[0] + search_input + search_base[1]
     
     return searchable_link
 
