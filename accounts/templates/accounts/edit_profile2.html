@@ -12,11 +12,13 @@
   <h2>Manage Your Profile</h2>
 <form method="post" action="http://localhost:8000/home/profile/">
 	{% csrf_token %}
-	Phone Number: <br> <input type="text" name="fname" value="{{ user.userprofile.phone_number }}"><br> <br>
-	Street Number: <br> <input type="text" name="fname" value="{{ user.userprofile.street_number }}"><br> <br>
-	Street Name: <br> <input type="text" name="fname" value="{{ user.userprofile.street_name }}"><br> <br>
-	Suburb: <br> <input type="text" name="fname" value="{{ user.userprofile.suburb }}"><br> <br>
-	Postcode: <br> <input type="text" name="fname" value="{{ user.userprofile.postcode }}"><br> <br>
+	<ul>
+		<li>Phone Number: <input id="phone_number" type="text" name="fname" value="{{ user.userprofile.phone_number }}"></li>
+		<li>Street Number: <input id="street_number" type="text" name="fname" value="{{ user.userprofile.street_number }}"></li>
+		<li>Street Name: <input id="street_name" type="text" name="fname" value="{{ user.userprofile.street_name }}"></li>
+		<li>Suburb: <input id="suburb" type="text" name="fname" value="{{ user.userprofile.suburb }}"></li>
+		<li>Postcode: <input id="post_code" type="text" name="fname" value="{{ user.userprofile.postcode }}"></li>
+	<ul>
 	<button class="form_bttn" type="submit">Submit</button>
 </form>
 </div>

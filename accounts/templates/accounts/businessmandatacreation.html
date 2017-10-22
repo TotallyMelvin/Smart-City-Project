@@ -13,16 +13,27 @@ Description:  this is the businessman data creation form
 <!--- check if user is a admin, if admin, give access --->
 
 {% if user.is_superuser %}
-
+<br>
+<br>
+<br>
+<div class = 'rego container-fluid create_businessdata'>
+  <div class="row">
+	  <div class="col-sm-3">
+      <!-- -->
+    </div>
+    <div class="col-sm-6 border">
 	<form method = "post">
 		{% csrf_token %}
-		<br><br><br><br>
+		<h2>Create Business Data</h2>
 		<p> For the Google Map search input, please ensure that it does not include the location,
 		and is simple, and all different information is separated by ','. for example: "MacDonalds, Burger King".</p>
 
 		{{ business_data_creation_form.as_p }}
 		<button class="form_bttn" type ="submit">Submit</button>
 	</form>
+</div>
+</div>
+</div>
 
 {% else %}
   <br>

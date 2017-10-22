@@ -48,7 +48,7 @@ html {
 	margin-right: -14.75px;
 	padding-top: 30px;
 	padding-left: 30px;
-	padding-right: 30px;
+	padding-right: 40px;
 	color: white;
 	font-size: 16px;
 }
@@ -183,6 +183,14 @@ nav a:hover {
 }
 
 .feedback {
+	margin-bottom: 40px;
+}
+
+.admin_section {
+	margin-bottom: 40px;
+}
+
+.create_admin {
 	margin-bottom: 40px;
 }
 
@@ -417,10 +425,12 @@ ul.errorlist {
 
 #id_username, #id_first_name, #id_last_name, #id_email {
 	display: block;
+	width: 25%;
 }
 
 .edit_profile #id_password {
 	margin-left: 15px;
+	display: none;
 }
 
 .edit_profile .helptext {
@@ -435,10 +445,56 @@ ul.errorlist {
 	height: auto;
 }
 
+.edit_profile ul {
+	list-style: none;
+	margin-left: -30px;
+}
+
+.edit_profile button {
+	margin-left: -10px;
+}
+
+#phone_number, #street_number, #street_name, #suburb, #post_code {
+	display: block;
+	width: 25%;
+	margin-bottom: 40px;
+}
+
 /* Feedback Section CSS */
 #id_feedback {
 	display: block;
 	color: grey;
 	resize: none;
 	width: 80%;
+}
+
+/* Admin Section CSS */ 
+.admin_section ul {
+	margin-top: 15px;
+	margin-left: -14.75px;
+	margin-right: -14.75px;
+	margin-bottom: -50px;
+	padding-top: 30px;
+	padding-bottom: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 16px;
+	list-style: none;
+}
+
+.admin_section li {
+	padding-bottom: 40px;
+	padding-left: 10px;
+}
+
+/* Create Business Data Section CSS */
+#id_businessType, #id_associatedCity, #id_cityOrganisationalData, #id_stateAnalysis, #id_furtherReadings, #id_useMap, #id_optionalMapSearchInput {
+	display: block;
+	color: grey;
+	resize: none;
+}
+
+#id_cityOrganisationalData, #id_stateAnalysis, #id_furtherReadings {
+	width: 80%;
+	height: 100px;
 }

@@ -9,11 +9,19 @@ admin-related pages--->
 	<br>
 	<br>
 	<br>
-	<br>
-	<a href="/home/admin/create_business_data" class="form_bttn" >Create Business Data </a>
-	<a href="/home/admin/add_admin" class="form_bttn" >Create New Admin Account</a>
-	<br>
-	<br>
+	<div class="container admin_section">
+	<div class="row">
+		<div class="col-sm-5 border">
+			<h2>Admin Section</h2>
+				<ul>
+					<li><a href="/home/admin/create_business_data" class="form_bttn" >Create Business Data </a></li>
+					<li><a href="/home/admin/add_admin" class="form_bttn" >Create New Admin Account</a></li>
+				</ul>
+		</div>
+		<div class="col-sm-1"></div>
+	</div>
+</div>
+
 {% else %}
 <h1> You Dont have access to this feature <h1>
 {% endif %}
