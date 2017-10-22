@@ -15,32 +15,39 @@ variable is true
 <!--- restrict access --->
 <!--- check if user is a admin, if admin, give access --->
 <!--- check if user is a businessman, if so, give access --->
+<div><br><br><br></div>
+	<div class="container-fluid business_entry">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 border">
+			{% if user.userprofile.user_type == 'businessman' or user.is_superuser %}
+			<h3> Business Type:</h3>
+			<p>{{object.businessType}} </p>
+			<h3> In City: </h3>
+			<p>{{object.associatedCity}}</p>
+			<h3>Organisations:</h3>
+			<p>{{object.cityOrganisationalData}}</p>
+			<h3>Current State:</h3>
+			<p>{{object.stateAnalysis}}</p>
+			<h3>Read More (References):</h3>
+			<p>{{object.furtherReadings}}</p>
 
-{% if user.userprofile.user_type == 'businessman' or user.is_superuser %}
-	<h1> {{object.businessType}} </h1>
-	<h2> In City: {{object.associatedCity}} </h2>
-	<h3>Organisations:</h3>
-	<p>{{object.cityOrganisationalData}}</p>
-	<h3>Current State:</h3>
-	<p>{{object.stateAnalysis}}</p>
-	<h3>Read More (References):</h3>
-	<p>{{object.furtherReadings}}</p>
+			{% if object.useMap %}
 
-	{% if object.useMap %}
+				<h3> Map: </h3>
+					<iframe width="600" height="450" frameborder="0"
+				src={{ object.optionalMapSearchInput }}
+				allowfullscreen></iframe>
+			{% endif %}
 
-		<h3> Map: </h3>
-			<iframe width="600" height="450" frameborder="0"
-		src={{ object.optionalMapSearchInput }}
-		allowfullscreen></iframe>
-	{% endif %}
-
-{% else %}
-<h1> You Dont have access to this feature <h1>
+		{% else %}
+		<h1> You Dont have access to this feature <h1>
 
 
-{% endif %}
+		{% endif %}
 
+		</div>
+	</div>
+</div>
 
-
-
-{% endblock %}
+		{% endblock %}
