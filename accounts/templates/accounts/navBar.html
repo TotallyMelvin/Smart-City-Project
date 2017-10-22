@@ -19,7 +19,7 @@
         <li>
           <a href="/home/map">Map</a>
         </li>
-		{% if user.userprofile.user_type == 'businessman' %} <!--- Jamie added --->
+		{% if user.userprofile.user_type == 'businessman' or user.is_superuser %} <!--- Jamie added --->
 			<li>
 				<a href="/home/business_feature">Org.Data</a> <!--- Jamie added --->
 			</li>
