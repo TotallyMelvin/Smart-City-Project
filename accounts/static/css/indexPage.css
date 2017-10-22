@@ -241,6 +241,25 @@ ul.errorlist {
 	height: auto;
 }
 
+.login a {
+	background: white;
+	margin-top: 50px;
+	margin-left: 15px;
+	width: 60%;
+	color: blue;
+	text-align: left;
+}
+
+.login a:hover {
+	color: grey;
+}
+
+.facebook {
+	width: 20%;
+	height: auto;
+	padding-right: 20px;
+}
+
 /* Logout Section CSS */
 .logout a {
 	color: white;

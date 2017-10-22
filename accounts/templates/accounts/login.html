@@ -18,8 +18,9 @@
 				  <button class="form_bttn" type="submit">Login</button> <br><br>
           {% load socialaccount %}
           {% providers_media_js %}
-          <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="btn btn-block btn-social btn-facebook" style="background-color:#FEFEFE;text-align:center">
-            <span class="fa fa-facebook"></span>Sign in with Facebook
+		  {% load static %}
+          <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="btn btn-block btn-social btn-facebook">
+            <span class="fa fa-facebook"><img class="facebook" src="{% static "css/Images/facebook.svg" %}" alt="Placeholder">Sign in with Facebook</span>
           </a>
 			  </form>
 		</div>
