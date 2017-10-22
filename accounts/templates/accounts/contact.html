@@ -11,10 +11,12 @@
 	<div class="col-sm-3"></div>
 	<div class="col-sm-6 border">
 		<h2>Contact</h2>
+		<p>Have a problem with our system? You can contact one of our admins by filling out the following form and our admin team will get back to you.</p>
 		<form role="form" action="" method="post">
 			{% csrf_token %}
 			{{ form.as_p }}
 			<button class="form_bttn" type="submit">Submit</button>
+			<a class="form_bttn" href="/home/help">Back</a>
 		</form>
 	</div>
 </div>
