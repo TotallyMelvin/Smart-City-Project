@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^login/$', login, {'template_name': 'accounts/login.html'}),
     url(r'^logout/$', logout, {'template_name': 'accounts/logout.html'}),
     url(r'^register/$', views.register, name='register'),
-    url(r'^addadmin/$', views.add_admin, name='add_admin'),
+    url(r'^admin/add_admin/$', views.add_admin, name='add_admin'),
     url(r'^addadminsuccess/$', views.add_admin_success, name='add_admin_success'),
     url(r'^map/$', MapView.as_view(), name='map'),
     url(r'^profile/$', views.profile, name='profile'),
