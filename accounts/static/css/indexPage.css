@@ -182,6 +182,10 @@ nav a:hover {
 	margin-bottom: 40px;
 }
 
+.feedback {
+	margin-bottom: 40px;
+}
+
 /* Footer Section CSS */
 .footer {
 	color: white;
@@ -410,4 +414,12 @@ ul.errorlist {
 	margin-top: 75px;
 	width: 115%;
 	height: auto;
+}
+
+/* Feedback Section CSS */
+#id_feedback {
+	display: block;
+	color: grey;
+	resize: none;
+	width: 80%;
 }
