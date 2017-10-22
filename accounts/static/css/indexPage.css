@@ -498,3 +498,19 @@ ul.errorlist {
 	width: 80%;
 	height: 100px;
 }
+
+/* Business Feature CSS */
+.results_info {
+	margin-bottom: 40px;
+}
+
+.business_results h5 {
+	margin-left: 20px;
+	margin-bottom: 40px;
+}
+
+.business_results a {
+	display: block;
+	width: 200px;
+	margin-left: 0px;
+}

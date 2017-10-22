@@ -19,42 +19,32 @@ It is designed in several parts.
   <br>
 <div class="container">
     <div class="row">
-    	<div class="col-sm-6 map_options">
+	<div class="col-sm-1"></div>
+    <div class="col-sm-5 map_options border">
   <h2>Business Data</h2>
 
 <form method = "post">
-<p>this is the businessman feature
-<br>
-
-</p>
-
+<p>This is the businessman feature. The displayed form below is the location form.</p>
 <!--- restrict access --->
 <!--- check if user is a admin, if admin, give access --->
 <!--- check if user is a businessman, if so, give access --->
-
 {% if user.userprofile.user_type == 'businessman' or user.is_superuser %}
-
-
 <!--- keep the csrf token security above all form options --->
 {% csrf_token %}
-
-<p> displayed form below is the location form</p>
 {{ location_form.as_p }}
-
 <button type ="submit" class="form_bttn">Submit</button>
 </form>
-
 </div>
-<div class="col-sm-1">
-</div>
+<div class="col-sm-1"></div>
 
-<div class="col-sm-5 map">
-	<br><br><br>
-
+<div class="col-sm-4 border">
 {% include "accounts/businessmanresults.html" %}
 </div>
 
 {% else %}
+<br>
+<br>
+<br>
 <h1> You Dont have access to this feature <h1>
 
 

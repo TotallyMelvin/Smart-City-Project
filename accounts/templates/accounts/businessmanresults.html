@@ -9,22 +9,20 @@ details about that data, which opens a new window with the details
 --->
 
 {% block content %}
-<p> this is proof that the results can load
-
+<div class="results_info"><p> This is proof that the results can load
 once the user selects their city, this should
 be filled by the entries that relate to that
 city in the model, with small information
-about each </p>
+about each. </p></div>
 
 <!--- go through all of the entries and
 
 print the relavent areas  --->
 
-
 {% for entry in all_entries %}
-	<h5> {{ entry.businessType }}: <a href=
-		"/home/business_feature/{{entry.id}}" class="form_bttn"> Click here to read more</a></h5><br>
-
+<div class="business_results">
+	<h5> {{ entry.businessType }}: <a href="/home/business_feature/{{entry.id}}" class="form_bttn"> Click here to read more</a></h5>
+</div>
 
 	{% endfor %}
 
