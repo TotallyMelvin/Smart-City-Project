@@ -1,0 +1,25 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<!-- include the navBar. Change navBar at navBar.html -->
+{% include 'accounts/navBar.html' %}
+<!-- Body -->
+<div><br><br><br></div>
+<div class = 'container-fluid edit_profile'>
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-6 border">
+  <h2>Manage Your Profile</h2>
+<form method="post" action="http://localhost:8000/home/profile/">
+	{% csrf_token %}
+	Phone Number: <br> <input type="text" name="fname" value="{{ user.userprofile.phone_number }}"><br> <br>
+	Street Number: <br> <input type="text" name="fname" value="{{ user.userprofile.street_number }}"><br> <br>
+	Street Name: <br> <input type="text" name="fname" value="{{ user.userprofile.street_name }}"><br> <br>
+	Suburb: <br> <input type="text" name="fname" value="{{ user.userprofile.suburb }}"><br> <br>
+	Postcode: <br> <input type="text" name="fname" value="{{ user.userprofile.postcode }}"><br> <br>
+	<button class="form_bttn" type="submit">Submit</button>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -5,30 +5,30 @@
 {% include 'accounts/navBar.html' %}
 <!-- Body -->
 <div><br><br><br></div>
-<div class="container-fluid profile">
-<div class="row">
-	<div class="col-sm-1"></div>
-	<div class="col-sm-5 border">
-  <h2>Manage Your Profile</h2>
-  <p>Feel free to update your details below</p>
-  <a href="/home/profile/edit_profile">Click to update your details</a>
-<form method="post">
-	<p>Username: {{ user.username }}</p>
-	<p>First Name: {{ user.first_name }}</p>
-	<p>Last Name: {{ user.last_name }}</p>
-	<p>Email Address: {{ user.email }}</p>
-
-	<p>Phone Number: {{ userProfile.phone_number }}</p>
-	<p>Street Number: {{ userProfile.street_number }}</p>
-	<p>Street Name: {{ userProfile.street_name }}</p>
-	<p>Suburb: {{ userProfile.suburb }}</p>
-	<p>Postcode: {{ userProfile.postcode }}</p>
-
-</form>
-</div>
-<div class="col-sm-1"></div>
-	{% load static %}
-	<div class="col-sm-5"><img class="profile_image" src="{% static "css/Images/profile.svg" %}" alt="Placeholder"></div>
-</div>
+	<div class="container-fluid profile">
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-6 border">
+		  <h2>Manage Your Profile</h2>
+		  <p>Update your details below</p>
+			<br>
+		  <a href="/home/profile/edit_profile">Click to update your first name, last name or email</a>
+			<a href="/home/profile/edit_profile2">Click to update other fields</a>
+			<form method="post">
+				<p>Username: {{ user.username }}</p>
+				<p>First Name: {{ user.first_name }}</p>
+				<p>Last Name: {{ user.last_name }}</p>
+				<p>Email Address: {{ user.email }}</p>
+				<p>Phone Number: {{ user.userprofile.phone_number }}</p>
+				<p>Street Number: {{ user.userprofile.street_number }}</p>
+				<p>Street Name: {{ user.userprofile.street_name }}</p>
+				<p>Suburb: {{ user.userprofile.suburb }}</p>
+				<p>Postcode: {{ user.userprofile.postcode }}</p>
+			</form>
+		</div>
+		<div class="col-sm-1"></div>
+		{% load static %}
+		<div class="col-sm-5"><img class="profile_image" src="{% static "css/Images/profile.svg" %}" alt="Placeholder"></div>
+	</div>
 </div>
 {% endblock %}

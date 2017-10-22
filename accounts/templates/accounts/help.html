@@ -1,26 +1,24 @@
 {% extends "accounts/base.html" %}
-
 {% block content %}
 {% include 'accounts/navBar.html' %}
-
 <br>
 <br>
 <br>
 <div class="container help">
-<div class="row">
-	<div class="col-sm-5 border">
-		<h2>Help</h2>
-		<ul>
-			<li><a href="/home/help/contact">Contact</a></li>
-			{% if user.is_anonymous %}
-			<li><a href="/home/password_reset">Password Recovery</a></li>
-			{% endif %}
-		</ul>
+	<div class="row">
+		<div class="col-sm-5 border">
+			<h2>Help</h2>
+				<ul>
+					<li><a href="/home/help/contact">Contact</a></li>
+					{% if user.is_anonymous %}
+					<li><a href="/home/password_reset">Password Recovery</a></li>
+					{% endif %}
+					<li><a href="/home/help/feedback">Provide feedback about Smart City</a></li>
+				</ul>
+		</div>
+		<div class="col-sm-1"></div>
+		{% load static %}
+		<div class="col-sm-6"><img class="help_image" src="{% static "css/Images/help.svg" %}" alt="Placeholder"></div>
 	</div>
-	<div class="col-sm-1"></div>
-	{% load static %}
-	<div class="col-sm-6"><img class="help_image" src="{% static "css/Images/help.svg" %}" alt="Placeholder"></div>
 </div>
-</div>
-
 {% endblock %}

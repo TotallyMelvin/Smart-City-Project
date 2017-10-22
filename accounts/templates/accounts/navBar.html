@@ -10,57 +10,36 @@
       </button>
       <p class="navbar-brand">Smart City</p>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="/home">Home<span class="sr-only">(current)</span></a></li>
-          {% if user.is_authenticated %}
-        <li>
-          <a href="/home/map">Map</a>
-        </li>
-		{% if user.userprofile.user_type == 'businessman' or user.is_superuser %} <!--- Jamie added --->
-			<li>
-				<a href="/home/business_feature">Org.Data</a> <!--- Jamie added --->
-			</li>
-			{% endif %}
-			
-		{% if user.is_superuser %} <!--- Jamie added --->
-			<li>
-				<a href="/home/admin/admin_page/">Admin Page </a> <!--- Jamie added --->
-			</li>
-			{% endif %}
-          {% endif %}
+
+        {% if user.is_authenticated %}
+        <li><a href="/home/map">Map</a></li>
+
+        {% if user.userprofile.user_type == 'businessman' or user.is_superuser %} <!--- Jamie added --->
+  			<li><a href="/home/business_feature">Org.Data</a></li> <!--- Jamie added --->
+  			{% endif %}
+
+        {% if user.is_superuser %} <!--- Jamie added --->
+        <li><a href="/home/admin/admin_page/">Admin Page </a></li> <!--- Jamie added --->
+  			{% endif %}
+        {% endif %}
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li>
-            {% if user.is_anonymous %}
-            <a href="/home/register">Register</a>
-        </li>
-        <li>
-          <a href="/home/login" >Login</a>
-        </li>
-        <li>
-    		    <a href="/home/help">Help</a>
-    	 </li>
-            {% endif %}
+        {% if user.is_anonymous %}
+        <li><a href="/home/register">Register</a></li>
+        <li><a href="/home/login" >Login</a></li>
+        <li><a href="/home/help">Help</a></li>
+        {% endif %}
 
-            {%if user.is_authenticated %}
-            <li>
-                <a href="/home/profile">Profile</a>
-            </li>
-
-            <li>
-                <a href="/home/logout">Logout</a>
-            </li>
-            <li>
-        		    <a href="/home/help">Help</a>
-        	 </li>
-			 <li>
-        		    <p>{{ user }}</p> <!--- Jamie added --->
-        	 </li>
-          {% endif %}
+        {%if user.is_authenticated %}
+        <li><a href="/home/profile">Profile</a></li>
+        <li><a href="/home/logout">Logout</a></li>
+        <li><a href="/home/help">Help</a></li>
+        {% endif %}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

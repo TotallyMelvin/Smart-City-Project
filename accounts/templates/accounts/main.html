@@ -1,25 +1,17 @@
-<!--- 
-Creator: Jamie Kostaschuk
-
+<!---Creator: Jamie Kostaschuk
 Description:  this is the map feature. firstly displays the form to the user
-					the displayed form is dependant on the user's user type.
-					
-afterwards, the map is displayed to the user based on their responses on the form.
-also includes a map to the businessman data page if the user is a businessman
-
-
---->
+					    the displayed form is dependant on the user's user type.
+              afterwards, the map is displayed to the user based on their responses on the form.
+              also includes a map to the businessman data page if the user is a businessman-->
 
 {% extends "accounts/base.html" %}
 {% block content %}
-
 <div class = 'info container-fluid'>
   <br>
   <br>
   <br>
 <div class="container map_options">
     <div class="row">
-
 	<div class="col-sm-6 border">
 	  <h2>Smart City Maps</h2>
 
@@ -39,45 +31,30 @@ also includes a map to the businessman data page if the user is a businessman
 
 	{% elif user.userprofile.user_type == 'student' %}
 	<p> The displayed form is the student form. </p>
-
 	{{ student_form.as_p }}
-	
+
 	{% elif user.userprofile.user_type == 'businessman' %}
 	<p> The displayed form is the businessman form. </p>
-
 	{{ businessman_form.as_p }}
 
 	{% else %}
 	<p>The displayed form is the general form. </p>
-
 	{{ base_form.as_p }}
-
 	{% endif %}
-
-	<!--- the below is a hidden input type, basically invisible to 
-	the user, it holds their user type. this should then be passed 
+	<!--- the below is a hidden input type, basically invisible to
+	the user, it holds their user type. this should then be passed
 	to the form with the submit button. --->
-
 	<input type="hidden" name="active_user_type" value= {{user.userprofile.user_type}}>
-
 	<button class="form_bttn" type ="submit">Submit</button>
 	</form>
-	
 	<!--- ADD IN THE BUSINESSMAN LINK TO THER ORGANISATION PAGE --->
 	{% if user.userprofile.user_type == 'businessman' %}
-	
 	<h3> Go to organisational information page: </h3>
 	<a href="http://127.0.0.1:8000/home/business_feature/" class="form_bttn">Go to business_feature</a>
-	
 	{% endif %}
-	
-	
-
-
 </div>
 <div class="col-sm-1">
 </div>
-
 <div class="col-sm-5 map">
 	<br><br><br>
 {% include "accounts/map.html" %}
@@ -85,10 +62,4 @@ also includes a map to the businessman data page if the user is a businessman
 </div>
 </div>
 </div>
-
-
-
-
-
-
 {% endblock %}

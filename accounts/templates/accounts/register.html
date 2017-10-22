@@ -1,5 +1,4 @@
 {% extends 'accounts/base.html' %}
-
 {% block content %}
 <!-- include the navBar. Change navBar at navBar.html -->
 {% include 'accounts/navBar.html' %}
@@ -15,8 +14,10 @@
     <div class="col-sm-6 border">
       <h2>Register your account</h2>
       {% if registered %}
-      <p>Thank you for registering!</p>
-      <a href="/home/">Return to homepage</a><br/>
+      <p>Thank you for registering!</p> <br>
+      &nbsp;
+      <a href="/home/">Return to homepage</a>
+      <a href="/home/login">Login to your account here</a><br/>
       {% else %}
       <form id="user_form" method="post" action="/home/register/"
       enctype="multipart/form">

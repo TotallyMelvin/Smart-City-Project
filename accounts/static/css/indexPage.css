@@ -64,12 +64,6 @@ html {
 	color: #ea1515;
 }
 
-.welcome_image {
-	margin-left: 10%;
-	width: 70%;
-	height: auto;
-}
-
 /* Navigation Bar Section CSS */
 .navbar {
 	background: #2380A5;
@@ -231,10 +225,7 @@ ul.errorlist {
 }
 
 .login_image {
-	margin-top: 20px;
-	margin-left: 10%;
-	width: 90%;
-	height: auto;
+	margin-top: 40px;
 }
 
 /* Logout Section CSS */
@@ -343,12 +334,6 @@ ul.errorlist {
 	text-decoration: none;
 }
 
-.help_image {
-	margin-left: 10%;
-	width: 80%;
-	height: auto;
-}
-
 /* Contact Section CSS */
 #id_contact_name, #id_contact_email, #id_content {
 	display: block;
@@ -400,14 +385,7 @@ ul.errorlist {
 	margin-left: 15px;
 }
 
-.edit_profile .helptext {
+.helptext {
 	font-size: 12px;
 	margin-left: 15px;
-	margin-right: 15px;
-}
-
-.profile_image {
-	margin-top: 75px;
-	width: 115%;
-	height: auto;
 }

@@ -11,16 +11,21 @@
     <div class="row">
 		<div class="col-sm-5 border">
 			<h2>Login</h2>
-			  <form method="post">
+        			  <form method="post">
 				  {% csrf_token %}
 				  {{ form.as_p }}
 				  <br>
-				  <button class="form_bttn" type="submit">Login</button>
+				  <button class="form_bttn" type="submit">Login</button> <br><br>
+          {% load socialaccount %}
+          {% providers_media_js %}
+          <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="btn btn-block btn-social btn-facebook" style="background-color:#FEFEFE;text-align:center">
+            <span class="fa fa-facebook"></span>Sign in with Facebook
+          </a>
 			  </form>
 		</div>
 	<div class="col-sm-1"></div>
 	{% load static %}
-	<div class="col-sm-6"><img class="login_image" src="{% static "css/Images/login.svg" %}" alt="Placeholder"></div>
+  <div class="col-sm-6"><img class="login_image" src="{% static "css/Images/login.svg" %}" alt="Placeholder"></div>
 </div>
 </div>
 </div>

@@ -3,10 +3,6 @@
 {% block content %}
 <!-- include the navBar. Change navBar at navBar.html -->
 {% include 'accounts/navBar.html' %}
-
-<!--- restrict access --->
-<!--- check if user is a admin, if admin, give access --->
-{% if user.is_superuser %}
 <!-- Body -->
 <div>
   <br><br><br>
@@ -14,20 +10,11 @@
 <div class = 'rego container-fluid register'>
   <div class="row">
 	  <div class="col-sm-3">
-      <!-- -->
     </div>
     <div class="col-sm-6 border">
-		<h2>Create Admin Account</h2>
-    {% if registered %}
+		<h2>Admin account successfully created!</h2>
     <p>Thank you for creating a new administrator account!</p> <br>
     <a href="/home/">Return to homepage</a><br/>
-    {% else %}
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button class="form_bttn" type="submit" name="submit">Create Admin</button>
-    </form>
-    {% endif %}
 </div>
 </div>
 </div>

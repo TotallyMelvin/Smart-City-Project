@@ -1,10 +1,10 @@
 
-<!--- 
+<!---
 Creator: Jamie Kostaschuk
 
 Description:  this is the businessman specific data feature - full details of data
 
-Displays all the data accociated with a business data entry. has the map if the useMap 
+Displays all the data accociated with a business data entry. has the map if the useMap
 variable is true
 
 --->
@@ -24,10 +24,10 @@ variable is true
 	<h3>Current State:</h3>
 	<p>{{object.stateAnalysis}}</p>
 	<h3>Read More (References):</h3>
-	<p>{{object.furtherReadings}}</p>	
-	
+	<p>{{object.furtherReadings}}</p>
+
 	{% if object.useMap %}
-	
+
 		<h3> Map: </h3>
 			<iframe width="600" height="450" frameborder="0"
 		src={{ object.optionalMapSearchInput }}

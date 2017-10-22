@@ -3,6 +3,9 @@ from django.contrib.auth.models import User, UserManager
 from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractUser
 
+class FeedbackModel(models.Model):
+    feedback = models.TextField(max_length=200, default='Please provide your feedback here.')
+
 #this creates a model for a user profile (if this is modified,
 #makemigrations and migrate need to be run to update the model)
 class UserProfile(models.Model):
@@ -17,11 +20,9 @@ class UserProfile(models.Model):
 def __unicode__(self):
         return self.username
 
-
 ###############################
 ## Jamie Section Start
 ###############################
-
 
 class FeatureLocationModel(models.Model):
     ## This Model will hold all the locations that the admin users want the
@@ -30,16 +31,15 @@ class FeatureLocationModel(models.Model):
     # because it's meant to be a small ID
     locationName = models.CharField(max_length=50, default='') #what will dispaly UI
     def __unicode__(self):
-        return self.locationName 
+        return self.locationName
 
-    
 class userTypeAccessModel(models.Model):
     ## This Model will hold all the type of locations
     userType = models.CharField(max_length=15, default='')
     accessableFeatures = models.CharField(max_length=100000, default='') ## a list
     ## with all the type of locations that the user can access
     def __unicode__(self):
-        return self.userType 
+        return self.userType
 
 class BusinessFeatureModel(models.Model):
     ## This Model will hold the following information as mandatory
@@ -56,7 +56,7 @@ class BusinessFeatureModel(models.Model):
 
     def __unicode__(self):
         return self.businessType
-    
+
 ###############################
 ## Jamie Section End
 ###############################
