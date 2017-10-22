@@ -1,4 +1,8 @@
 def get_google_url(search_loc, search_selections, webpage_identifer):
+    ## Creator: Jamie Kostaschuk
+    ## Description: this function creates a link that can be embeded into the html to display information to the
+    ## user. this will be used for the user map feature and the business info feature
+
     ## This method will generate the google maps embeded link that can creaate the map functionality for the site
     search_base = ["https://www.google.com/maps/embed/v1/search?q=", "&key=AIzaSyCo8hPtObahI8239nap_CvlDo0mUTkqx6Q"]
 
