@@ -39,6 +39,8 @@
         <li><a href="/home/profile">Profile</a></li>
         <li><a href="/home/logout">Logout</a></li>
         <li><a href="/home/help">Help</a></li>
+		<li><p class="user_label">{{ user.username }}</p></li>
+		<li><p>{{ user.userprofile.user_type }}</p></li>
         {% endif %}
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -77,6 +77,18 @@ html {
 	box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+nav p {
+	color: white !important;
+	margin-top: 15px;
+	padding-right: 20px;
+}
+
+.user_label {
+	margin-left: 30px;
+	padding-left: 30px;
+	border-left: 1.5px solid #2d5f72;
+}
+
 nav a {
 	color: white !important;
 }
@@ -107,6 +119,7 @@ nav a:hover {
    -webkit-text-stroke-color: white;
 	color: #ea1515 !important;
 	margin-bottom: -15px !important;
+	margin-top: 0px;
 }
 
 /* Header Section CSS */
