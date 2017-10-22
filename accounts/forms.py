@@ -253,29 +253,29 @@ class BusinessDataCreationForm(forms.Form):
 
     ##----  entries ---- ## # every option should be required besides the map
     ## businessType: character entry, should hopfully be one word describing the org
-    businessType = forms.CharField(required=True)
+    businessType = forms.CharField(label = "Business Type:", required=True)
 
     ## associatedCity: Cities that can be related, should be taken from the "feature
     ## Location Model" to force the user to add only from the approved cities and
     ## stops human error
-    associatedCity = forms.ChoiceField(label = "Choose location",
+    associatedCity = forms.ChoiceField(label = "Choose location:",
                                  initial = 'Choose location',
                                  choices = possible_locations,
                                  required = True)
 
      ## cityOrganisationalData: text input for the data
-    cityOrganisationalData = forms.CharField(required=True, widget=forms.Textarea)
+    cityOrganisationalData = forms.CharField(label = "Choose location:", required=True, widget=forms.Textarea)
 
     ##stateAnalysis: professional analysis
-    stateAnalysis = forms.CharField(required=True, widget=forms.Textarea)
+    stateAnalysis = forms.CharField(label = "State Analysis in City:", required=True, widget=forms.Textarea)
 
     ## further references
-    furtherReadings = forms.CharField(required=True, widget=forms.Textarea)
+    furtherReadings = forms.CharField(label = "Further Readings and References:", required=True, widget=forms.Textarea)
 
     ## boolian checkbox ## to know whether or not to display a map to the users when
     ## they view the data
     useMap = forms.BooleanField(
-        label='useMap',
+        label='Dispaly Map to User?',
         required=False,
         initial=False
      )
@@ -283,4 +283,4 @@ class BusinessDataCreationForm(forms.Form):
     ## should be a character input for the user, which is
     ## then combined with the selected location to create the embed link, which can
     ## be saved directly into the database
-    optionalMapSearchInput = forms.CharField(required=False)
+    optionalMapSearchInput = forms.CharField(label = "Map Search:", required=False)

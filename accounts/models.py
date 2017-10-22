@@ -52,7 +52,7 @@ class BusinessFeatureModel(models.Model):
     useMap = models.BooleanField()
     ## if useMap is true, then the optionalMapSearch will be used to create
     ## the map link for the user to see
-    optionalMapSearchInput = models.CharField(max_length=100, default='---')
+    optionalMapSearchInput = models.CharField(max_length=1000, default='---')
 
     def __unicode__(self):
         return self.businessType
