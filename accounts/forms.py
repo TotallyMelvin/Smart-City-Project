@@ -26,7 +26,7 @@ class UserForm(forms.ModelForm):
 
 class UserProfileForm(forms.ModelForm):
     userTypeOptions = (('student', 'Student'),
-                       ('businessmen', 'Businessmen'),
+                       ('businessman', 'Businessman'),
                        ('tourist', 'Tourist'))
     user_type = forms.ChoiceField(widget=forms.RadioSelect, choices=userTypeOptions)
     phone_number = forms.CharField(max_length=30, required=False)
