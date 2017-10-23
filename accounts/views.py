@@ -335,8 +335,8 @@ def contact(request):
             email = EmailMessage(
                 "New contact form submission",
                 content,
-                "Your website" +'',
-                ['youremail@gmail.com'],
+                "IFB299G16" +'',
+                ['ifb299g16.techteam@gmail.com'],
                 headers = {'Reply-To': contact_email }
             )
             email.send()
