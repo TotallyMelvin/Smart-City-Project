@@ -111,7 +111,6 @@ def get_user_type_features(user_type):
 
     all_features = userTypeAccessModel.objects.filter(
         userType=user_type).values() ## get
-    print(all_features)
     for feature_set in all_features: ## access the data in the list
         all_features = feature_set.get('accessableFeatures') #the strin containing all features separated by a ','
         split_ver = all_features.split(',')## split into individual (list format)
@@ -136,12 +135,10 @@ class GeneralMapForm(forms.Form):
 
     ## LOCATIONS - database read
     locations = return_locations()
-    print(locations)
 
     ## Get the features. "cityInfo" is the base usertype that all
     ## users have access to.
     general_features = get_user_type_features('cityInfo')
-    print(general_features)
 
     ## make the GUI elements
     location = forms.ChoiceField(label = "Choose location",
@@ -161,14 +158,12 @@ class TouristMapForm(forms.Form):
 
 
     locations = return_locations()
-    print(locations)
 
     ## extra user type specific list
     general_features = get_user_type_features('cityInfo')
     user_specific_features = get_user_type_features('tourist')
 
     all_features = general_features + user_specific_features
-    print(all_features)
 
     ## GENERAL CITY INFORMATION USER STORY
     location = forms.ChoiceField(label = "Choose location",
@@ -187,14 +182,12 @@ class BusinessmanMapForm(forms.Form):
 
 
     locations = return_locations()
-    print(locations)
 
     ## extra user type specific list
     general_features = get_user_type_features('cityInfo')
     user_specific_features = get_user_type_features('businessman')
 
     all_features = general_features + user_specific_features
-    print(all_features)
 
     ## GENERAL CITY INFORMATION USER STORY
     location = forms.ChoiceField(label = "Choose location",
@@ -211,14 +204,12 @@ class StudentMapForm(forms.Form):
     ## Description: Same as the GeneralMapForm but with aditional user type
     ## features in the all_features list
     locations = return_locations()
-    print(locations)
 
     ## extra user type specific list
     general_features = get_user_type_features('cityInfo')
     user_specific_features = get_user_type_features('student')
 
     all_features = general_features + user_specific_features
-    print(all_features)
 
     ## GENERAL CITY INFORMATION USER STORY
     location = forms.ChoiceField(label = "Choose location", initial = 'Choose location',
