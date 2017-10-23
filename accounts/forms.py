@@ -264,7 +264,7 @@ class BusinessDataCreationForm(forms.Form):
                                  required = True)
 
      ## cityOrganisationalData: text input for the data
-    cityOrganisationalData = forms.CharField(label = "Choose location:", required=True, widget=forms.Textarea)
+    cityOrganisationalData = forms.CharField(label = "City Data:", required=True, widget=forms.Textarea)
 
     ##stateAnalysis: professional analysis
     stateAnalysis = forms.CharField(label = "State Analysis in City:", required=True, widget=forms.Textarea)
